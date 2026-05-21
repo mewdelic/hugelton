@@ -85,6 +85,7 @@
 .support-grid__main,
 .footer-grid__brand {
     grid-column: span 4;
+    min-width: 0;
     padding: 1rem 1.35rem;
     border-right: 1px solid $line;
 }
@@ -209,6 +210,13 @@
 
 .support-grid__copy {
     max-width: 27rem;
+}
+
+.support-grid__main .section-title,
+.resource-grid__head .section-title,
+.platform-grid__head .section-title,
+.info-grid__lead .section-title {
+    max-width: 9ch;
 }
 
 .support-grid__links {

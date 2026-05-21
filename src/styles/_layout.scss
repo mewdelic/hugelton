@@ -5,7 +5,7 @@
     flex-direction: column;
     min-height: 100vh;
     padding: var(--shell-gutter);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-grid,
@@ -23,6 +23,7 @@
 
 .main-shell {
     flex: 1 1 auto;
+    min-height: 0;
     margin-top: var(--topbar-gap);
     border: 1px solid $line;
     border-radius: 1.5rem;
@@ -37,13 +38,15 @@
 
 .section-title {
     margin: 0;
-    max-width: 11ch;
-    font-family: "Syne", sans-serif;
-    font-size: clamp(1.7rem, 4vw, 3rem);
-    font-weight: 800;
-    line-height: 0.96;
-    letter-spacing: -0.04em;
+    max-width: 10ch;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.35rem, 2.8vw, 2.35rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: 0;
     text-transform: uppercase;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
 }
 
 .text-link {
