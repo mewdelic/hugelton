@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "Fukiai";
+    src: url("/fonts/fukiai.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --topbar-size: 4.75rem;
+}
+
+body {
+    background: #000;
+    color: $ink;
+    font-family: "Space Grotesk", sans-serif;
+    overflow-x: hidden;
+    line-height: 1.4;
+
+    // Smooth scroll and custom sleek global scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 999px;
+        border: 2px solid #000;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.45);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+svg {
+    display: block;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}

@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HÜGELTON INSTRUMENTS</title>
+  <meta name="description" content="HÜGELTON INSTRUMENTS designs Eurorack modules, experimental software, and media tools from Kobe, Japan.">
+  <meta name="theme-color" content="#0055ff">
+  <meta property="og:title" content="HÜGELTON INSTRUMENTS">
+  <meta property="og:description" content="Custom Eurorack modules, experimental software, and instrument design from Kobe.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hugelton.github.io/hugelton/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -22,107 +28,371 @@
         </a>
       </div>
 
-      <a href="#hero" class="topbar__meta">Hügelton Instruments / Kobe / 2026</a>
+      <button class="topbar__mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span class="topbar__mobile-toggle-label">Menu</span>
+        <span class="topbar__mobile-toggle-icon" aria-hidden="true">↗</span>
+      </button>
 
-      <nav class="topbar__tags" aria-label="Categories">
-        <a href="#showcase">Software</a>
-        <a href="#showcase">Eurorack</a>
-        <a href="#showcase">Hardware</a>
-        <a href="#profile">Design</a>
+      <nav class="topbar__tags" aria-label="Primary">
+        <div class="topbar__group">
+          <a class="topbar__group-trigger" href="#showcase">Products</a>
+          <div class="topbar__submenu" aria-label="Products">
+            <a href="#showcase">Featured</a>
+            <a href="#catalog">Catalog</a>
+            <a href="#platforms">Platforms</a>
+          </div>
+        </div>
+
+        <div class="topbar__group">
+          <a class="topbar__group-trigger" href="#about">About</a>
+          <div class="topbar__submenu" aria-label="About">
+            <a href="#about">Profile</a>
+            <a href="#capabilities">Practice</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="topbar__group">
+          <a class="topbar__group-trigger" href="#documents">Documents</a>
+          <div class="topbar__submenu" aria-label="Documents">
+            <a href="#documents">Overview</a>
+            <a href="./docs/index.html">Docs</a>
+            <a href="./docs/cli-reference.html">CLI</a>
+          </div>
+        </div>
+
+        <div class="topbar__group">
+          <a class="topbar__group-trigger" href="#support">Support</a>
+          <div class="topbar__submenu" aria-label="Support">
+            <a href="#support">Support</a>
+            <a href="https://github.com/mewdelic/hugelton">GitHub</a>
+            <a href="https://x.com/hugelton_">X</a>
+          </div>
+        </div>
       </nav>
     </header>
 
-    <section class="hero-grid" id="hero">
-      <div class="hero-grid__main">
-        <div class="hero-kicker">
-          <span>(T/T)</span>
-          <span>Media Generators</span>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__panel">
+        <div class="mobile-menu__header">
+          <a href="./index.html" class="mobile-menu__brand" aria-label="Hugelton Home">
+            <span class="mobile-menu__brand-mark">
+              <svg xmlns="http://www.w3.org/2000/svg" class="brand-logo" viewBox="0 0 8.504 6.373">
+                <g data-name="Print">
+                  <path d="M8.226 4.705c-.082 0-.261-.17-.396-.628-.263-.893-.695-1.026-.929-1.026s-.665.133-.929 1.026c-.135.458-.314.628-.369.633-.002-.002-.236-.153-.415-1.208-.19-1.121-.497-1.666-.936-1.666s-.746.545-.937 1.666c-.13.767-.289 1.056-.357 1.156-.086-.159-.271-.647-.417-2.056C2.303.309 1.933 0 1.602 0S.901.309.663 2.602C.498 4.197.283 4.612.217 4.705h-.218v.556h.278c.331 0 .701-.309.938-2.602.131-1.257.291-1.781.386-1.993.095.211.255.735.386 1.993.238 2.293.608 2.602.939 2.602.44 0 .746-.545.937-1.666.161-.949.366-1.167.368-1.203.041.035.247.254.408 1.203.191 1.121.497 1.666.937 1.666.234 0 .665-.133.929-1.026.135-.458.314-.628.396-.628s.261.17.396.628c.263.893.695 1.027.929 1.027h.278v-.556h-.278ZM0 5.817h8.504v.556H0z"></path>
+                </g>
+              </svg>
+            </span>
+            <span class="mobile-menu__brand-text">HÜGELTON</span>
+          </a>
+          <button class="mobile-menu__close" type="button" aria-label="Close menu">Close</button>
         </div>
 
-        <h1 class="hero-title">
-          <span>HÜGELTON</span>
-          <span>INSTRUMENTS</span>
-        </h1>
+        <div class="mobile-menu__groups">
+          <div class="mobile-menu__group is-open">
+            <button class="mobile-menu__group-trigger" type="button" aria-expanded="true">
+              <span>Products</span>
+              <span class="mobile-menu__group-icon" aria-hidden="true">↘</span>
+            </button>
+            <div class="mobile-menu__submenu">
+              <a href="#showcase">Featured</a>
+              <a href="#catalog">Catalog</a>
+              <a href="#platforms">Platforms</a>
+            </div>
+          </div>
 
-        <div class="hero-subline">
-          <p>Precision tools for sound and visual expression.</p>
-          <p>Custom Eurorack modules, experimental software, and instrument design from Kobe.</p>
+          <div class="mobile-menu__group is-open">
+            <button class="mobile-menu__group-trigger" type="button" aria-expanded="true">
+              <span>About</span>
+              <span class="mobile-menu__group-icon" aria-hidden="true">↘</span>
+            </button>
+            <div class="mobile-menu__submenu">
+              <a href="#about">Profile</a>
+              <a href="#capabilities">Practice</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+
+          <div class="mobile-menu__group is-open">
+            <button class="mobile-menu__group-trigger" type="button" aria-expanded="true">
+              <span>Documents</span>
+              <span class="mobile-menu__group-icon" aria-hidden="true">↘</span>
+            </button>
+            <div class="mobile-menu__submenu">
+              <a href="#documents">Overview</a>
+              <a href="./docs/index.html">Docs</a>
+              <a href="./docs/cli-reference.html">CLI</a>
+            </div>
+          </div>
+
+          <div class="mobile-menu__group is-open">
+            <button class="mobile-menu__group-trigger" type="button" aria-expanded="true">
+              <span>Support</span>
+              <span class="mobile-menu__group-icon" aria-hidden="true">↘</span>
+            </button>
+            <div class="mobile-menu__submenu">
+              <a href="#support">Support</a>
+              <a href="https://github.com/mewdelic/hugelton">GitHub</a>
+              <a href="https://x.com/hugelton_">X</a>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <aside class="hero-grid__side">
-        <div class="side-block side-block--index">
-          <span class="side-label">Index</span>
-          <span class="side-value">01</span>
+    <div class="main-shell">
+      <section class="hero-grid" id="hero">
+        <div class="hero-grid__main">
+          <div class="hero-kicker">
+            <span>(T/T)</span>
+            <span>Media Generators</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span>HÜGELTON</span>
+            <span>INSTRUMENTS</span>
+          </h1>
+
+          <div class="hero-subline">
+            <p>Precision tools for sound and visual expression.</p>
+            <p>Custom Eurorack modules, experimental software, and instrument systems designed and developed in Kobe, Japan.</p>
+          </div>
         </div>
 
-        <div class="side-block side-block--arrow" aria-hidden="true">↔</div>
+        <aside class="hero-grid__side">
+          <div class="side-block side-block--index">
+            <span class="side-label">Index</span>
+            <span class="side-value">01</span>
+          </div>
 
-        <div class="side-block side-block--note">
-          <p>Typeface study, border system, and instrument archive.</p>
-        </div>
-      </aside>
-    </section>
+          <div class="side-block side-block--arrow" aria-hidden="true">↔</div>
 
-    <section class="showcase-grid" id="showcase" aria-label="Product Showcase">
-      <a class="showcase-card" href="./docs/index.html">
-        <div class="showcase-card__head">
-          <span class="showcase-card__index">01</span>
-          <span class="showcase-card__type">Hardware / Eurorack</span>
-        </div>
-        <div class="showcase-card__media">
-          <img src="/showcase/k112e.png" alt="K112E sketch" />
-        </div>
-        <div class="showcase-card__body">
-          <h2>K112E</h2>
-          <p>Digital Compound Oscillator</p>
-        </div>
-      </a>
+          <div class="side-block side-block--note">
+            <p>Instruments, documents, software, and field-tested modular tools.</p>
+          </div>
+        </aside>
+      </section>
 
-      <a class="showcase-card" href="./docs/index.html">
-        <div class="showcase-card__head">
-          <span class="showcase-card__index">02</span>
-          <span class="showcase-card__type">Hardware / Eurorack</span>
+      <section class="detail-grid detail-grid--intro" id="about">
+        <div class="detail-grid__left">
+          <p class="detail-label">Profile</p>
+          <p class="detail-copy">HÜGELTON builds modular instruments and sound software with a focus on responsive DSP, tactile control, and a clear visual language.</p>
         </div>
-        <div class="showcase-card__media">
-          <img src="/showcase/tem.png" alt="The Earth Module" />
-        </div>
-        <div class="showcase-card__body">
-          <h2>The Earth Module</h2>
-          <p>Networked Environmental Modulator</p>
-        </div>
-      </a>
 
-      <a class="showcase-card" href="./docs/index.html">
-        <div class="showcase-card__head">
-          <span class="showcase-card__index">03</span>
-          <span class="showcase-card__type">Software / Playdate</span>
+        <div class="detail-grid__center">
+          <p class="detail-label">Studio</p>
+          <p class="detail-copy detail-copy--serif">Independent design and engineering for Eurorack, portable devices, and custom media systems.</p>
         </div>
-        <div class="showcase-card__media">
-          <img src="/showcase/posg.png" alt="P.O.S.G." />
+
+        <div class="detail-grid__right">
+          <a class="action-link" href="#contact">Contact</a>
         </div>
-        <div class="showcase-card__body">
-          <h2>P.O.S.G.</h2>
-          <p>Playdate Organic Sound Generators</p>
+      </section>
+
+      <section class="showcase-grid" id="showcase" aria-label="Featured Products">
+        <a class="showcase-card" href="#catalog">
+          <div class="showcase-card__head">
+            <span class="showcase-card__index">01</span>
+            <span class="showcase-card__type">Hardware / Eurorack</span>
+          </div>
+          <div class="showcase-card__media">
+            <img src="/showcase/k112e.png" alt="K112E sketch" />
+          </div>
+          <div class="showcase-card__body">
+            <h2>K112E</h2>
+            <p>Digital Compound Oscillator with expanded CV and updated performance.</p>
+          </div>
+        </a>
+
+        <a class="showcase-card" href="#catalog">
+          <div class="showcase-card__head">
+            <span class="showcase-card__index">02</span>
+            <span class="showcase-card__type">Hardware / Eurorack</span>
+          </div>
+          <div class="showcase-card__media">
+            <img src="/showcase/tem.png" alt="The Earth Module" />
+          </div>
+          <div class="showcase-card__body">
+            <h2>The Earth Module</h2>
+            <p>Weather and space data translated into CV and gate for generative patching.</p>
+          </div>
+        </a>
+
+        <a class="showcase-card" href="#platforms">
+          <div class="showcase-card__head">
+            <span class="showcase-card__index">03</span>
+            <span class="showcase-card__type">Software / Playdate</span>
+          </div>
+          <div class="showcase-card__media">
+            <img src="/showcase/posg.png" alt="P.O.S.G." />
+          </div>
+          <div class="showcase-card__body">
+            <h2>P.O.S.G.</h2>
+            <p>Portable ambient generators for Playdate with visual and sonic interaction.</p>
+          </div>
+        </a>
+      </section>
+
+      <section class="info-grid" id="capabilities">
+        <div class="info-grid__lead">
+          <p class="detail-label">Capabilities</p>
+          <h2 class="section-title">Design, DSP, firmware, and interfaces in one system.</h2>
         </div>
-      </a>
-    </section>
+        <div class="info-grid__cards">
+          <article class="info-card">
+            <span class="info-card__index">01</span>
+            <h3>Instrument Design</h3>
+            <p>Module concepts, control layouts, and panel systems built for live use and repeatable workflows.</p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__index">02</span>
+            <h3>Embedded + Web</h3>
+            <p>Firmware, browser utilities, and companion interfaces that make hardware easier to configure and maintain.</p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__index">03</span>
+            <h3>Software Platforms</h3>
+            <p>Standalone tools, VCV Rack modules, and portable sound devices developed from the same core ideas.</p>
+          </article>
+        </div>
+      </section>
 
-    <section class="detail-grid" id="profile">
-      <div class="detail-grid__left">
-        <p class="detail-label">Current Scope</p>
-        <p class="detail-copy">Software, modular hardware, and design systems for sound tools.</p>
-      </div>
+      <section class="catalog-grid" id="catalog">
+        <div class="catalog-grid__head">
+          <p class="detail-label">Product Index</p>
+          <p class="catalog-grid__note">Selected products and concepts from the archive.</p>
+        </div>
+        <div class="catalog-grid__list">
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Released</p>
+              <h3>K102E</h3>
+            </div>
+            <p>Digital Compound Oscillator based on the Island Synthesis approach with three oscillators and wavetable control.</p>
+          </article>
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Released</p>
+              <h3>K104E</h3>
+            </div>
+            <p>Dual digital envelope generator with ADSR, AD, AR, loop, and CV time modulation.</p>
+          </article>
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Development</p>
+              <h3>K108E</h3>
+            </div>
+            <p>Digital Traveler inspired by classic moving filter behavior and motion-oriented tone shaping.</p>
+          </article>
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Development</p>
+              <h3>S603</h3>
+            </div>
+            <p>MIDI CC to CV decoder for bringing controller and DAW automation into modular patches.</p>
+          </article>
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Soon</p>
+              <h3>S601</h3>
+            </div>
+            <p>MIDI Patchbay with active routing for flexible device distribution inside performance setups.</p>
+          </article>
+          <article class="catalog-card">
+            <div>
+              <p class="catalog-card__meta">Hardware / Eurorack / Soon</p>
+              <h3>S602</h3>
+            </div>
+            <p>Passive multi switch for stereo audio, CV, and MIDI TRS signal selection.</p>
+          </article>
+        </div>
+      </section>
 
-      <div class="detail-grid__center">
-        <p class="detail-label">Profile</p>
-        <p class="detail-copy detail-copy--serif">A quieter visual system built from typography, rhythm, and borders.</p>
-      </div>
+      <section class="platform-grid" id="platforms">
+        <div class="platform-grid__head">
+          <p class="detail-label">Platforms</p>
+          <h2 class="section-title">Beyond modules: software instruments and utilities.</h2>
+        </div>
+        <div class="platform-grid__cards">
+          <article class="platform-card">
+            <p class="platform-card__meta">Software / VCV Rack</p>
+            <h3>VCV Rack Modules</h3>
+            <p>K-Series virtual modules translate Hügelton hardware ideas into patchable software systems.</p>
+            <a class="text-link" href="https://library.vcvrack.com/Hugelton">VCV Rack Library</a>
+          </article>
+          <article class="platform-card">
+            <p class="platform-card__meta">Software / Playdate</p>
+            <h3>P.O.S.G.</h3>
+            <p>Ambient and generative sound tools designed for Playdate's compact visual and tactile format.</p>
+            <a class="text-link" href="https://hugelton.itch.io/posg">Itch.io Release</a>
+          </article>
+          <article class="platform-card">
+            <p class="platform-card__meta">Web / Utility</p>
+            <h3>TEM Web UI</h3>
+            <p>Browser-based parameter mapping and location setup for environmental data instruments.</p>
+            <a class="text-link" href="#documents">Documentation</a>
+          </article>
+        </div>
+      </section>
 
-      <div class="detail-grid__right">
-        <a class="action-link" href="./docs/index.html">View Docs</a>
-      </div>
-    </section>
+      <section class="resource-grid" id="documents">
+        <div class="resource-grid__head">
+          <p class="detail-label">Documents</p>
+          <h2 class="section-title">Docs, references, and update paths for current instruments.</h2>
+        </div>
+        <div class="resource-grid__cards">
+          <a class="resource-card" href="./docs/index.html">
+            <span class="resource-card__kicker">Reference</span>
+            <h3>Documentation Index</h3>
+            <p>Core documentation, product notes, and project entry points.</p>
+          </a>
+          <a class="resource-card" href="./docs/cli-reference.html">
+            <span class="resource-card__kicker">CLI</span>
+            <h3>Command Reference</h3>
+            <p>Utility commands and operational details for software-facing projects.</p>
+          </a>
+          <a class="resource-card" href="https://apps.hugelton.com/TEM/">
+            <span class="resource-card__kicker">Firmware</span>
+            <h3>TEM Updater</h3>
+            <p>Firmware access point for The Earth Module and related setup flows.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="support-grid" id="support">
+        <div class="support-grid__main">
+          <p class="detail-label">Support</p>
+          <h2 class="section-title">Public docs, release channels, and direct contact.</h2>
+          <p class="support-grid__copy">For product questions, documentation gaps, software issues, and collaboration inquiries, use the channels below.</p>
+        </div>
+        <div class="support-grid__links">
+          <a class="support-link" href="mailto:info@hugelton.com">
+            <span>Email</span>
+            <strong>info@hugelton.com</strong>
+          </a>
+          <a class="support-link" href="https://github.com/mewdelic/hugelton">
+            <span>GitHub</span>
+            <strong>Repository + Issues</strong>
+          </a>
+          <a class="support-link" href="https://x.com/hugelton_">
+            <span>X</span>
+            <strong>@hugelton_</strong>
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer-grid" id="contact">
+        <div class="footer-grid__brand">
+          <p class="detail-label">HÜGELTON INSTRUMENTS</p>
+          <p class="footer-copy">Independent instrument design, DSP, and software development from Kobe, Japan.</p>
+        </div>
+        <div class="footer-grid__meta">
+          <span>Kobe, Japan</span>
+          <span>Eurorack / Software / Media</span>
+        </div>
+      </footer>
+    </div>
   </main>
+  <script type="module" src="/src/js/site.js"></script>
 </body>
 </html>
