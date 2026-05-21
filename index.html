@@ -3,123 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hügelton Instruments</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@700;900&display=swap');
+  <title>Hügelton Instruments — Kobe</title>
 
+  <!-- Google Fonts: Inter 900 (極太) + Noto Serif JP (明朝) + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ─── Palette ─── */
     :root {
-      --black: #0a0a0a;
-      --white: #f0ece2;
-      --acid: #c8ff00;
-      --blue: #0055ff;
-      --pink: #ff3366;
-      --grid: 8px;
-      --border: 3px solid var(--black);
-      --shadow: 5px 5px 0 var(--black);
+      --ink:   #080808;
+      --paper: #ece8dc;
+      --port:  #7fa8c9;       /* 港町・くすんだ水色 */
+      --acid:  #e0ff1a;       /* 高彩度・イエロー */
+      --flash: #ff2255;       /* 高彩度・レッド */
+      --void:  #1a0a2e;       /* darkwave・ダークパープル */
+      --grid:  8px;
+      --border: 3px solid var(--ink);
+      --shadow: 6px 6px 0 var(--ink);
     }
 
+    /* ─── Dithering noise layer ─── */
+    html::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ─── Base ─── */
     body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'Space Mono', 'Courier New', monospace;
-      line-height: 1.6;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', 'Hiragino Gothic Pro', 'Noto Sans JP', sans-serif;
+      line-height: 1.5;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
-    /* ── Header ── */
+    /* ─── Header ─── */
     header {
-      border-bottom: var(--border);
-      padding: calc(var(--grid)*3) calc(var(--grid)*4);
+      border-bottom: 4px solid var(--ink);
+      padding: calc(var(--grid)*3) calc(var(--grid)*5);
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-end;
       flex-wrap: wrap;
       gap: var(--grid);
+      position: relative;
+      background: var(--ink);
+      color: var(--paper);
+    }
+    header::before {
+      content: "⚡";
+      position: absolute;
+      top: -16px;
+      right: 40px;
+      font-size: 2rem;
+      transform: rotate(-12deg);
+      filter: drop-shadow(2px 2px 0 var(--flash));
     }
     header h1 {
       font-family: 'Inter', sans-serif;
       font-weight: 900;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: -0.04em;
-      line-height: 1;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: -0.05em;
+      line-height: 0.9;
     }
     header h1 em {
       font-style: normal;
-      background: var(--acid);
-      padding: 0 6px;
+      font-family: 'Noto Serif JP', serif;
+      color: var(--port);
+      font-weight: 900;
+      font-size: 1.15em;
+      letter-spacing: 0;
+    }
+    header h1 span {
+      display: block;
+      font-size: 0.18em;
+      font-family: 'Space Mono', monospace;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--port);
+      margin-top: 4px;
+    }
+    nav {
+      display: flex;
+      gap: var(--grid);
+      flex-wrap: wrap;
     }
     nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
       font-weight: 700;
-      text-decoration: none;
-      color: var(--black);
-      border: 2px solid var(--black);
-      padding: 6px 16px;
-      margin-left: var(--grid);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: transform 0.1s, box-shadow 0.1s;
+      text-decoration: none;
+      color: var(--paper);
+      border: 2px solid var(--port);
+      padding: 6px 18px;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+      mix-blend-mode: normal;
     }
     nav a:hover {
+      background: var(--port);
+      color: var(--ink);
       transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0 var(--black);
+      box-shadow: 4px 4px 0 var(--acid);
     }
 
-    /* ── Grid ── */
+    /* ─── Main ─── */
     main {
-      max-width: 1400px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: calc(var(--grid)*4);
+      padding: calc(var(--grid)*5);
     }
 
-    .section-label {
-      font-family: 'Inter', sans-serif;
+    /* ─── Section Label ─── */
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: var(--grid);
-      border-left: 4px solid var(--blue);
-      padding-left: 8px;
+      color: var(--port);
+      margin-bottom: calc(var(--grid)*3);
+      padding-left: 10px;
+      border-left: 4px solid var(--acid);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
+    /* ─── Product Grid ─── */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: calc(var(--grid)*3);
-      margin-bottom: calc(var(--grid)*6);
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 0;
     }
 
-    /* ── Card ── */
+    /* ─── Card ─── */
     .card {
       border: var(--border);
-      background: var(--white);
-      box-shadow: var(--shadow);
-      transition: transform 0.1s, box-shadow 0.1s;
-      cursor: pointer;
+      background: var(--paper);
+      margin: -1.5px; /* collapse borders */
+      position: relative;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
+      transition: transform 0.07s, box-shadow 0.07s;
+      cursor: default;
+      overflow: hidden;
     }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--port);
+    }
+    .card:nth-child(4n+1)::before { background: var(--acid); }
+    .card:nth-child(4n+2)::before { background: var(--flash); }
+    .card:nth-child(4n+3)::before { background: var(--void); }
     .card:hover {
       transform: translate(-3px, -3px);
-      box-shadow: 8px 8px 0 var(--black);
+      box-shadow: 8px 8px 0 var(--ink);
+      z-index: 2;
     }
     .card-tag {
-      font-size: 0.7rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 6px 12px;
-      border-bottom: 2px solid var(--black);
-      background: var(--acid);
+      padding: 7px 14px;
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .card-tag.software { background: var(--blue); color: var(--white); }
-    .card-tag.hardware { background: var(--pink); color: var(--white); }
+    .card-tag::after {
+      content: "▶";
+      font-size: 0.6em;
+      opacity: 0.6;
+    }
+    .card-tag.software { background: var(--void); color: var(--paper); }
+    .card-tag.hardware { background: var(--acid); color: var(--ink); }
+    .card-tag.diy      { background: var(--flash); color: var(--paper); }
+
     .card-body {
-      padding: calc(var(--grid)*2);
+      padding: calc(var(--grid)*2.5);
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -127,121 +204,139 @@
     .card h2 {
       font-family: 'Inter', sans-serif;
       font-weight: 900;
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
+      font-size: 1.85rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
       margin-bottom: var(--grid);
-      line-height: 1.1;
+    }
+    .card h2 em {
+      font-style: normal;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 900;
+      font-size: 1.05em;
     }
     .card p {
-      font-size: 0.85rem;
-      line-height: 1.7;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem;
+      line-height: 1.85;
       flex: 1;
       margin-bottom: var(--grid);
+      max-width: 60ch;
     }
     .card-link {
+      font-family: 'Space Mono', monospace;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-decoration: none;
-      color: var(--black);
-      border-bottom: 2px solid var(--black);
+      color: var(--ink);
+      border-bottom: 2px solid var(--ink);
       padding-bottom: 2px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      align-self: flex-start;
+      transition: color 0.1s, border-color 0.1s;
     }
-    .card.new::after {
-      content: 'NEW';
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: var(--pink);
-      color: var(--white);
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border: 2px solid var(--black);
+    .card-link:hover {
+      color: var(--flash);
+      border-color: var(--flash);
     }
-    .card { position: relative; }
 
-    /* ── Footer ── */
+    .badge-new {
+      position: absolute;
+      top: calc(var(--grid) * -0.5);
+      right: calc(var(--grid) * -0.5);
+      background: var(--flash);
+      color: var(--paper);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border: 3px solid var(--ink);
+      transform: rotate(4deg);
+      letter-spacing: 0.08em;
+    }
+    .badge-wip {
+      position: absolute;
+      top: calc(var(--grid) * -0.5);
+      right: calc(var(--grid) * -0.5);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border: 3px solid var(--ink);
+      transform: rotate(-3deg);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── Footer ─── */
     footer {
-      border-top: var(--border);
-      padding: calc(var(--grid)*3) calc(var(--grid)*4);
+      border-top: 4px solid var(--ink);
+      margin-top: calc(var(--grid)*8);
+      padding: calc(var(--grid)*4) calc(var(--grid)*5);
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
+      align-items: flex-end;
       flex-wrap: wrap;
       gap: var(--grid);
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.82rem;
     }
-    footer a {
-      color: var(--black);
+    footer .footer-left {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      line-height: 1.8;
+    }
+    footer .footer-right a {
+      color: var(--port);
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.95rem;
+      margin-left: var(--grid);
+      border-bottom: 2px solid var(--port);
+      transition: border-color 0.1s;
     }
-    footer a:hover { text-decoration: underline; }
+    footer .footer-right a:hover { border-color: var(--acid); }
 
-    /* ── Docs sidebar ── */
-    .docs-layout {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: calc(var(--grid)*4);
-      padding: calc(var(--grid)*4);
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .docs-sidebar {
-      border-right: var(--border);
-      padding-right: calc(var(--grid)*3);
-    }
-    .docs-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
-    .docs-sidebar a {
-      display: block;
-      padding: 8px 12px;
-      text-decoration: none;
-      color: var(--black);
-      font-size: 0.85rem;
-      border-radius: 0;
-      border-left: 3px solid transparent;
-    }
-    .docs-sidebar a:hover,
-    .docs-sidebar a.active {
+    /* ─── ASCII art marquee ─── */
+    .marquee-band {
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
       background: var(--acid);
-      border-left-color: var(--black);
+      overflow: hidden;
+      padding: 8px 0;
+    }
+    .marquee-inner {
+      white-space: nowrap;
+      font-family: 'Space Mono', monospace;
       font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      animation: scroll 25s linear infinite;
     }
-    .docs-content {
-      border-left: var(--border);
-      padding-left: calc(var(--grid)*3);
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
-    .docs-content h2 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 900;
-      font-size: 2rem;
-      margin-bottom: var(--grid);
-      letter-spacing: -0.03em;
+
+    /* ─── Glitch on hover ─── */
+    .glitch-hover:hover {
+      animation: glitch 0.25s steps(3) 2;
     }
-    .docs-content h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-top: calc(var(--grid)*3);
-      margin-bottom: var(--grid);
-      border-bottom: 2px solid var(--black);
-      padding-bottom: 4px;
-    }
-    .docs-content pre {
-      background: var(--black);
-      color: var(--acid);
-      padding: var(--grid);
-      font-size: 0.85rem;
-      overflow-x: auto;
-      border: var(--border);
+    @keyframes glitch {
+      0%   { transform: translate(-2px,-1px); }
+      25%  { transform: translate(2px, 1px); filter: hue-rotate(40deg); }
+      50%  { transform: translate(-1px, 2px); filter: hue-rotate(-40deg); }
+      75%  { transform: translate(1px,-2px); }
+      100% { transform: translate(0); }
     }
 
     @media (max-width: 768px) {
-      .docs-layout { grid-template-columns: 1fr; }
-      .docs-sidebar { border-right: none; border-bottom: var(--border); padding-right: 0; padding-bottom: var(--grid); }
-      .docs-content { border-left: none; padding-left: 0; }
+      .product-grid { grid-template-columns: 1fr; }
+      header { padding: var(--grid) calc(var(--grid)*2); }
+      main { padding: calc(var(--grid)*3) calc(var(--grid)*2); }
     }
   </style>
 </head>
@@ -249,81 +344,69 @@
 
   <!-- ══ Header ══ -->
   <header>
-    <h1>HÜGEL<em>TON</em></h1>
+    <h1>
+      HÜGEL<em>T</em>N
+      <span>KOBE / JP — SINCE 2024</span>
+    </h1>
     <nav>
       <a href="/docs">Docs</a>
       <a href="/modules">Modules</a>
       <a href="/apps">Apps</a>
-      <a href="/">Top</a>
+      <a href="https://x.com/hugelton_">X</a>
     </nav>
   </header>
+
+  <!-- ══ Marquee ══ -->
+  <div class="marquee-band">
+    <div class="marquee-inner">
+      &nbsp;&nbsp;★ KOBE MODULAR SCENE ★ EUROPEAN STANDARD + JAPANESE CRAFT ★ OPEN SOURCE HARDWARE ★ HÜGELTON INSTRUMENTS ★ CZ-101 PHASE DISTORTION SYNTH ★ PLAYDATE SOUND GENERATORS ★ LUAJIT RHYTHM COMPOSER ★&nbsp;&nbsp;
+      &nbsp;&nbsp;★ KOBE MODULAR SCENE ★ EUROPEAN STANDARD + JAPANESE CRAFT ★ OPEN SOURCE HARDWARE ★ HÜGELTON INSTRUMENTS ★ CZ-101 PHASE DISTORTION SYNTH ★ PLAYDATE SOUND GENERATORS ★ LUAJIT RHYTHM COMPOSER ★&nbsp;&nbsp;
+    </div>
+  </div>
 
   <!-- ══ Main ══ -->
   <main>
 
-    <p class="section-label">// Instruments & Tools</p>
+    <p class="eyebrow">// Instruments &amp; Tools — Modular / DIY / Open Source / Kobe</p>
 
     <div class="product-grid">
 
-      <div class="card new">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>The Earth Module</h2>
-          <p>Networked Environmental Modulator. 環境データをモジュラー信号に変換する网络的モジュレーター。</p>
-          <a class="card-link" href="/modules/earth.html">詳細 →</a>
-        </div>
-      </div>
-
       <div class="card">
+        <div class="badge-new">NEW</div>
         <div class="card-tag hardware">Hardware • Eurorack</div>
         <div class="card-body">
-          <h2>K102E</h2>
-          <p>Digital Compound Oscillator. 2つの波形レイヤーと複雑なFM/AM変調を備えたデジタル・オシレーター。</p>
-          <a class="card-link" href="/modules/k102e.html">詳細 →</a>
-        </div>
-      </div>
-
-      <div class="card new">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>K104E</h2>
-          <p>Digital Envelope Generator. 2系統のエンベロープを同時に生成するデジタル・エンベロープ・ジェネレーター。</p>
-          <a class="card-link" href="/modules/k104e.html">詳細 →</a>
-        </div>
-      </div>
-
-      <div class="card new">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>K112E</h2>
-          <p>Dual VCF / State Variable Filter. 2系統のステートバリアブル・フィルター。ローパス・バンドパス・ハイパス。</p>
+          <h2>K<em>1</em>12<em>E</em></h2>
+          <p>Dual VCF / State Variable Filter. 2系統のステートバリアブル・フィルター。ローパス・バンドパス・ハイパス出力を同時に備える。</p>
           <a class="card-link" href="/modules/k112e.html">詳細 →</a>
         </div>
       </div>
 
-      <div class="card new">
+      <div class="card">
+        <div class="badge-new">NEW</div>
         <div class="card-tag hardware">Hardware • DIY</div>
         <div class="card-body">
-          <h2>Polume</h2>
-          <p>Capacitive Touch Keyboard / CV Interface. 12鍵の capacitive タッチキーボードと 6CV/6Gate 出力。</p>
+          <h2>P<em>olume</em></h2>
+          <p>Capacitive Touch Keyboard / CV Interface. 12鍵のキャパシタブ・タッチキーボード。6CV + 6Gate 出力でモジュラーと統合可能。</p>
           <a class="card-link" href="/polume.html">詳細 →</a>
         </div>
       </div>
 
       <div class="card">
+        <div class="badge-wip">WIP</div>
         <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>Clockworker</h2>
-          <p>Eurorack Clock/DIN Sync Module. 内部クロック・USB MIDI・UART MIDIの3モード対応 96 PPQN クロックハブ。</p>
+        <div class="card-body glitch-hover">
+          <h2>C<em>lock</em>worker</h2>
+          <p>96 PPQN Eurorack Clock Hub. 内部クロック / USB MIDI / UART DIN Sync の3モードを 4PDT スイッチで即時切替。</p>
           <a class="card-link" href="/modules/clockworker.html">詳細 →</a>
         </div>
       </div>
 
       <div class="card">
+        <div class="badge-wip">WIP</div>
         <div class="card-tag software">Software • CLI</div>
-        <div class="card-body">
-          <h2>Quex</h2>
-          <p>LuaJIT Rhythm Composer. LuaJIT上で動作するリズム・シーケンサー。ライブコーディング対応。</p>
+        <div class="card-body glitch-hover">
+          <h2>Q<em>uex</em></h2>
+          <p>LuaJIT Rhythm Composer. LuaJIT上で動作するリズム・シーケンサー。ライブコーディングによるパターン生成に対応。</p>
           <a class="card-link" href="/apps/quex.html">詳細 →</a>
         </div>
       </div>
@@ -331,8 +414,8 @@
       <div class="card">
         <div class="card-tag hardware">Hardware • DIY</div>
         <div class="card-body">
-          <h2>CrispyZebra</h2>
-          <p>CZ-101 Phase Distortion Synth on RP2040. ローランド CZ-101 のフェーズ・ディストーションをPicoで再現。</p>
+          <h2>CrispyZ<em>ebra</em></h2>
+          <p>CZ-101 Phase Distortion Synth on RP2040. ローランド CZ-101 のフェーズディストーションを Raspberry Pi Pico で再現。</p>
           <a class="card-link" href="/apps/picocz.html">詳細 →</a>
         </div>
       </div>
@@ -340,17 +423,53 @@
       <div class="card">
         <div class="card-tag hardware">Hardware • DIY</div>
         <div class="card-body">
-          <h2>SumaShield</h2>
-          <p>Pico Audio/MIDI Shield. RP2040 Pico用 オーディオ出力 (PT8211) + MIDI入出力搭載シールド。</p>
+          <h2>SumaSh<em>ield</em></h2>
+          <p>Pico Audio/MIDI Shield. PT8211 DAC + オーディオ出力 / MIDI 入出力を搭載した RP2040 Pico 用シールド基板。</p>
           <a class="card-link" href="/apps/sumashield.html">詳細 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag hardware">Hardware • Eurorack</div>
+        <div class="card-body">
+          <h2>K<em>1</em>02<em>E</em></h2>
+          <p>Digital Compound Oscillator. 2レイヤーの波形と FM/AM 変調を備えたデジタルオシレーター。</p>
+          <a class="card-link" href="/modules/k102e.html">詳細 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag hardware">Hardware • Eurorack</div>
+        <div class="card-body">
+          <h2>K<em>1</em>04<em>E</em></h2>
+          <p>Digital Envelope Generator. 2系統のADSRエンベロープを同時生成するデジタルEG。</p>
+          <a class="card-link" href="/modules/k104e.html">詳細 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag hardware">Hardware • Eurorack</div>
+        <div class="card-body">
+          <h2>The E<em>arth</em> M<em>odule</em></h2>
+          <p>Networked Environmental Modulator. 温度・湿度・明るなど環境センサー値をモジュラー信号に変換するネットワーク対応モジュール。</p>
+          <a class="card-link" href="/modules/earth.html">詳細 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag hardware">Hardware • Eurorack</div>
+        <div class="card-body">
+          <h2>S<em>yncB</em>ar</h2>
+          <p>SBX-1 Style Clock / MIDI Sync Module. Arturia SBX-1クローン。RP2040ベースでBuild Your Own审美的</p>
+          <a class="card-link" href="/modules/syncbar.html">詳細 →</a>
         </div>
       </div>
 
       <div class="card">
         <div class="card-tag software">Software • VCV Rack</div>
         <div class="card-body">
-          <h2>VCV Rack Modules</h2>
-          <p>K-Series Modules for VCV Rack. K102E, K104E を VCV Rack 上でシミュレート。</p>
+          <h2>VCV Rack <em>Modules</em></h2>
+          <p>K-Series Modules for VCV Rack. K102E / K104E をソフトウェアでシミュレート。</p>
           <a class="card-link" href="/modules/vcvrack.html">詳細 →</a>
         </div>
       </div>
@@ -358,8 +477,8 @@
       <div class="card">
         <div class="card-tag software">Software • Playdate</div>
         <div class="card-body">
-          <h2>P.O.S.G.</h2>
-          <p>Playdate Organic Sound Generators. Playdate用オルガン・サウンド・ジェネレーター。</p>
+          <h2><em>P.O.S.G.</em></h2>
+          <p>Playdate Organic Sound Generators. Playdateハンドヘルド向けオルガンサウンド・ジェネレーター集。</p>
           <a class="card-link" href="/apps/posg.html">詳細 →</a>
         </div>
       </div>
@@ -370,10 +489,17 @@
 
   <!-- ══ Footer ══ -->
   <footer>
-    <span>Hügelton Instruments — Kobe, Japan</span>
-    <span>
-      <a href="https://x.com/hugelton_">X / @hugelton_</a>
-    </span>
+    <div class="footer-left">
+      <div>HÜGELTON INSTRUMENTS</div>
+      <div>神戸市中央区 — KOBE CHUO-KU, JAPAN</div>
+      <div>&nbsp;</div>
+      <div style="opacity:0.4; font-size:0.68rem; letter-spacing:0.12em;">OSS / DIY / COUNTER-CULTURE // EST. 2024</div>
+    </div>
+    <div class="footer-right">
+      <a href="https://x.com/hugelton_">@hugelton_</a>
+      <a href="https://note.com/4563photo">note</a>
+      <a href="https://github.com/mewdelic">GitHub</a>
+    </div>
   </footer>
 
 </body>
