@@ -7,59 +7,62 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    :root { --ink:#080808; --paper:#ece8dc; --port:#7fa8c9; --acid:#e0ff1a; --flash:#ff2255; --void:#1a0a2e; --border:3px solid #080808; }
-    html::before { content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:256px; }
-    body { background:var(--paper); color:var(--ink); font-family:'Inter','Hiragino Gothic Pro',sans-serif; line-height:1.5; }
-    header { border-bottom:3px solid var(--ink); padding:16px 40px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; }
-    header h1 { font-family:'Inter',sans-serif; font-weight:900; font-size:1.6rem; letter-spacing:-0.04em; }
-    header h1 em { font-style:normal; font-family:'Noto Serif JP',serif; color:var(--port); }
-    nav a { font-family:'Space Mono',monospace; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; color:var(--ink); border:2px solid var(--port); padding:4px 16px; margin-left:6px; }
-    nav a:hover { background:var(--port); }
-    .docs-layout { display:grid; grid-template-columns:220px 1fr; gap:40px; padding:40px; max-width:1200px; margin:0 auto; }
-    .docs-sidebar { border-right:var(--border); padding-right:32px; }
-    .sidebar-title { font-family:'Space Mono',monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--port); padding-left:8px; border-left:3px solid var(--acid); margin:24px 0 8px; }
-    .docs-sidebar nav { display:flex; flex-direction:column; }
-    .docs-sidebar a { display:block; padding:5px 14px; text-decoration:none; color:var(--ink); font-size:0.82rem; border-left:3px solid transparent; margin-bottom:1px; }
-    .docs-sidebar a:hover { background:var(--acid); border-left-color:var(--ink); font-weight:700; }
-    .docs-sidebar a.active { background:var(--acid); border-left-color:var(--ink); font-weight:700; }
-    .docs-content h2 { font-family:'Inter',sans-serif; font-weight:900; font-size:2.4rem; letter-spacing:-0.04em; margin-bottom:16px; border-bottom:4px solid var(--ink); padding-bottom:12px; }
-    .docs-content h3 { font-family:'Inter',sans-serif; font-weight:700; font-size:1.1rem; margin-top:32px; margin-bottom:10px; border-bottom:2px solid var(--ink); padding-bottom:4px; }
-    .docs-content p { font-family:'Space Mono',monospace; font-size:0.85rem; margin-bottom:10px; max-width:70ch; line-height:1.8; }
-    .docs-content pre { background:var(--void); color:var(--acid); font-family:'Space Mono',monospace; font-size:0.82rem; padding:16px; overflow-x:auto; border:var(--border); margin-bottom:16px; }
-    .docs-content code { font-family:'Space Mono',monospace; background:var(--ink); color:var(--port); padding:2px 7px; font-size:0.82rem; }
-    .webmcp-badge { display:inline-flex; align-items:center; gap:8px; background:var(--acid); color:var(--ink); font-family:'Space Mono',monospace; font-size:0.78rem; font-weight:700; letter-spacing:0.06em; padding:8px室里无 16px; text-decoration:none; border:3px solid var(--ink); margin:12px 0; }
-    .webmcp-badge:hover { transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--ink); }
-    .webmcp-badge::before { content:"▶"; }
-    table { width:100%; border-collapse:collapse; border:var(--border); margin-bottom:16px; font-size:0.85rem; }
-    th { text-align:left; padding:10px 14px; border-bottom:2px solid var(--ink); font-family:'Space Mono',monospace; font-weight:700; font-size:0.78rem; }
-    td { padding:8px 14px; border-bottom:1px solid #ccc; font-family:'Space Mono',monospace; }
-    footer { border-top:3px solid var(--ink); padding:16px 40px; display:flex; justify-content:space-between; font-size:0.8rem; margin-top:48px; background:var(--ink); color:var(--paper); font-family:'Space Mono',monospace; }
-    footer a { color:var(--port); text-decoration:none; font-weight:700; }
-    @media(max-width:768px){ .docs-layout{grid-template-columns:1fr;} .docs-sidebar{border-right:none;border-bottom:var(--border);padding-right:0;} }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink:#0f0f0f; --paper:#f2efea; --metal:#888880; --border:2px solid var(--ink); --grid:8px; }
+    html::before { content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.02; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Inter', 'Hiragino Gothic Pro', sans-serif; line-height: 1.55; font-size: 17px; }
+    header { border-bottom: var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+    header h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: -0.05em; }
+    header h1 em { font-style: normal; font-family: 'Noto Serif JP', serif; color: var(--metal); }
+    nav a { font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--ink); padding: 2px 0; margin-left: 20px; }
+    nav a:hover { color: var(--metal); border-color: var(--metal); }
+    .docs-layout { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 48px; max-width: 1200px; margin: 0 auto; }
+    .docs-sidebar { border-right: 1px solid rgba(0,0,0,0.1); padding-right: 40px; }
+    .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--metal); padding-left: 8px; border-left: 2px solid var(--ink); margin: 32px 0 10px; }
+    .docs-sidebar nav { display: flex; flex-direction: column; }
+    .docs-sidebar a { display: block; padding: 4px 14px; text-decoration: none; color: var(--ink); font-size: 0.82rem; border-left: 2px solid transparent; margin-bottom: 1px; }
+    .docs-sidebar a:hover, .docs-sidebar a.active { background: rgba(0,0,0,0.04); border-left-color: var(--ink); font-weight: 700; }
+    .docs-content h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -0.05em; margin-bottom: 10px; }
+    .docs-content h2 em { font-style: normal; font-family: 'Noto Serif JP', serif; font-size: 0.35em; color: var(--metal); display: block; margin-top: 4px; letter-spacing: 0; }
+    .docs-content h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem; margin-top: 48px; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 4px; }
+    .docs-content p { font-family: 'Space Mono', monospace; font-size: 0.86rem; line-height: 1.9; margin-bottom: 16px; max-width: 72ch; }
+    .docs-content pre { background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: 0.82rem; padding: var(--grid) calc(var(--grid)*1.5); overflow-x: auto; margin-bottom: 16px; line-height: 1.9; }
+    .docs-content code { font-family: 'Space Mono', monospace; font-size: 0.82rem; background: rgba(0,0,0,0.07); color: var(--ink); padding: 2px 7px; }
+    .webmcp-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; padding: 8px 20px; text-decoration: none; border: 2px solid var(--ink); margin: 16px 0; }
+    .webmcp-badge::before { content: "▶"; font-size: 0.7em; }
+    .webmcp-badge:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--metal); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.85rem; }
+    th { text-align: left; padding: 10px 14px; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.75rem; border-bottom: 2px solid var(--ink); }
+    td { padding: 8px 14px; border-bottom: 1px solid rgba(0,0,0,0.08); font-family: 'Space Mono', monospace; }
+    tr:last-child td { border-bottom: none; }
+    footer { border-top: 1px solid rgba(0,0,0,0.12); padding: 16px 48px; display: flex; justify-content: space-between; font-size: 0.78rem; font-family: 'Space Mono', monospace; color: var(--metal); margin-top: 64px; }
+    footer a { color: var(--ink); text-decoration: none; }
+    @media(max-width:768px){ .docs-layout{grid-template-columns:1fr;} .docs-sidebar{border-right:none;border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:var(--grid);} }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>HÜGEL<em>T</em>N&ensp;<span style="font-family:'Space Mono';letter-spacing:0.12em;font-size:0.55em;font-weight:400;">CLI REFERENCE</span></h1>
+    <h1>HÜGEL<em>T</em>N <span style="font-size:0.35em; font-weight:400; letter-spacing:0.12em; color:var(--metal);">CLI REFERENCE</span></h1>
     <nav>
       <a href="/">Top</a>
       <a href="/docs">Docs</a>
-      <a href="/modules">Modules</a>
+      <a href="https://github.com/mewdelic">GitHub</a>
     </nav>
   </header>
 
   <div class="docs-layout">
     <aside class="docs-sidebar">
-      <div class="sidebar-title">// Getting Started</div>
+      <div class="eyebrow">// Getting Started</div>
       <nav>
         <a href="/docs/index.html">はじめに</a>
         <a class="active" href="/docs/cli-reference.html">CLI Reference</a>
       </nav>
     </aside>
+
     <article class="docs-content">
-      <h2>CLI Reference</h2>
-      <p>Hügeltonプロジェクトで使用するコマンドライン・ツールのリファレンス。</p>
+      <h2>CLI Reference<em>command line tools</em></h2>
+
       <a class="webmcp-badge" href="webmcp://hugelton.com/docs/cli-reference">WebMCP で開く</a>
 
       <h3>arduino-cli — RP2040 / RP2350</h3>
@@ -69,8 +72,8 @@
   --export-binaries \
   /path/to/sketch</pre>
 
-      <h3>Wokwi CLI — Simulation</h3>
-      <pre>export WOKWI_CLI_TOKEN="your-token"
+      <h3>Wokwi CLI — Simulation (no browser)</h3>
+      <pre>export WOKWI_CLI_TOKEN="your-ci-token"
 wokwi-cli /project --timeout 5000</pre>
       <pre>[wokwi]
 version = 1
@@ -79,12 +82,17 @@ elf = 'build/sketch.ino.elf'
 rfc2217ServerPort = 4000</pre>
 
       <h3>picotool — Flash / Reset</h3>
-      <pre>picotool load firmware.uf2       # flash UF2
-picotool info                      # device info
-picotool save -t elf firmware.elf  # dump flash → ELF</pre>
+      <pre>picotool load firmware.uf2           # flash UF2
+picotool info                          # device info
+picotool save -t elf firmware.elf      # dump flash → ELF</pre>
 
       <h3>sigrok-cli — Logic Analyzer</h3>
-      <pre>sigrok-cli --driver=... --channels=CH1,CH2 --samples=1M capture.sr</pre>
+      <pre>sigrok-cli --driver=fx2lafw --channels=CH1,CH2,CH3 \
+  --samples=1M -O vcd capture.vcd</pre>
+
+      <h3>himalaya — Email (IMAP / Gmail)</h3>
+      <pre>himalaya inbox list
+himalaya inbox read --folder=INBOX --limit=10</pre>
 
       <h3>Tool Matrix</h3>
       <table>
@@ -103,12 +111,21 @@ picotool save -t elf firmware.elf  # dump flash → ELF</pre>
         <tr><td>RP2040 Zero</td><td>.uf2 / .hex / .elf</td><td>GP25/29 not in Wokwi</td></tr>
         <tr><td>RP2350</td><td>.uf2 / .elf</td><td>via picotool</td></tr>
       </table>
+
+      <h3>Known Issues</h3>
+      <table>
+        <tr><th>Issue</th><th>Workaround</th></tr>
+        <tr><td>Wokwi screenshot 16×16</td><td>Use serial log (rfc2217 port 4000)</td></tr>
+        <tr><td>GP25 / GP29 (built-in LED)</td><td>Use GP16 in Wokwi / GP29 on hardware</td></tr>
+        <tr><td>Wokwi CI token expired</td><td>Regenerate at wokwi.com/dashboard/ci</td></tr>
+      </table>
+
     </article>
   </div>
 
-  <footer>
+  <footer class="docs-footer">
     <span>HÜGELTON INSTRUMENTS — Kobe, Japan</span>
-    <span><a href="https://x.com/hugelton_">@hugelton_</a></span>
+    <span><a href="https://x.com/hugelton_">@hugelton_</a> · <a href="https://github.com/mewdelic">GitHub</a></span>
   </footer>
 </body>
 </html>

@@ -5,208 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hügelton Instruments — Kobe</title>
 
-  <!-- Google Fonts: Inter 900 (極太) + Noto Serif JP (明朝) + Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ─── Palette ─── */
+    /* ── Monochrome palette ── */
     :root {
-      --ink:   #080808;
-      --paper: #ece8dc;
-      --port:  #7fa8c9;       /* 港町・くすんだ水色 */
-      --acid:  #e0ff1a;       /* 高彩度・イエロー */
-      --flash: #ff2255;       /* 高彩度・レッド */
-      --void:  #1a0a2e;       /* darkwave・ダークパープル */
-      --grid:  8px;
-      --border: 3px solid var(--ink);
-      --shadow: 6px 6px 0 var(--ink);
+      --ink:   #0f0f0f;
+      --paper: #f2efea;
+      --metal: #888880;
+      --flash: #e0ff1a;   /* ほんのわずかなアクセント */
+      --border: 2px solid var(--ink);
+      --grid: 8px;
     }
 
-    /* ─── Dithering noise layer ─── */
+    /* ── Dithering noise ── */
     html::before {
       content: "";
-      position: fixed; inset: 0; z-index: 9999;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
     }
 
-    /* ─── Base ─── */
+    html { scroll-behavior: smooth; }
+
     body {
       background: var(--paper);
       color: var(--ink);
       font-family: 'Inter', 'Hiragino Gothic Pro', 'Noto Sans JP', sans-serif;
-      line-height: 1.5;
-      font-size: 16px;
-      overflow-x: hidden;
+      line-height: 1.55;
+      font-size: 17px;
     }
 
-    /* ─── Header ─── */
-    header {
-      border-bottom: 4px solid var(--ink);
-      padding: calc(var(--grid)*3) calc(var(--grid)*5);
-      display: flex;
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
       justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: var(--grid);
+      padding: calc(var(--grid)*6) calc(var(--grid)*5);
       position: relative;
-      background: var(--ink);
-      color: var(--paper);
-    }
-    header::before {
-      content: "⚡";
-      position: absolute;
-      top: -16px;
-      right: 40px;
-      font-size: 2rem;
-      transform: rotate(-12deg);
-      filter: drop-shadow(2px 2px 0 var(--flash));
-    }
-    header h1 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 900;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      letter-spacing: -0.05em;
-      line-height: 0.9;
-    }
-    header h1 em {
-      font-style: normal;
-      font-family: 'Noto Serif JP', serif;
-      color: var(--port);
-      font-weight: 900;
-      font-size: 1.15em;
-      letter-spacing: 0;
-    }
-    header h1 span {
-      display: block;
-      font-size: 0.18em;
-      font-family: 'Space Mono', monospace;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--port);
-      margin-top: 4px;
-    }
-    nav {
-      display: flex;
-      gap: var(--grid);
-      flex-wrap: wrap;
-    }
-    nav a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--paper);
-      border: 2px solid var(--port);
-      padding: 6px 18px;
-      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
-      mix-blend-mode: normal;
-    }
-    nav a:hover {
-      background: var(--port);
-      color: var(--ink);
-      transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0 var(--acid);
-    }
-
-    /* ─── Main ─── */
-    main {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: calc(var(--grid)*5);
-    }
-
-    /* ─── Section Label ─── */
-    .eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--port);
-      margin-bottom: calc(var(--grid)*3);
-      padding-left: 10px;
-      border-left: 4px solid var(--acid);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* ─── Product Grid ─── */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 0;
-    }
-
-    /* ─── Card ─── */
-    .card {
-      border: var(--border);
-      background: var(--paper);
-      margin: -1.5px; /* collapse borders */
-      position: relative;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.07s, box-shadow 0.07s;
-      cursor: default;
+      border-bottom: var(--border);
       overflow: hidden;
     }
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--port);
-    }
-    .card:nth-child(4n+1)::before { background: var(--acid); }
-    .card:nth-child(4n+2)::before { background: var(--flash); }
-    .card:nth-child(4n+3)::before { background: var(--void); }
-    .card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 8px 8px 0 var(--ink);
-      z-index: 2;
-    }
-    .card-tag {
+    .hero-eyebrow {
       font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      padding: 7px 14px;
-      border-bottom: 2px solid var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: var(--metal);
+      margin-bottom: var(--grid);
     }
-    .card-tag::after {
-      content: "▶";
-      font-size: 0.6em;
-      opacity: 0.6;
-    }
-    .card-tag.software { background: var(--void); color: var(--paper); }
-    .card-tag.hardware { background: var(--acid); color: var(--ink); }
-    .card-tag.diy      { background: var(--flash); color: var(--paper); }
-
-    .card-body {
-      padding: calc(var(--grid)*2.5);
+    .hero-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 18vw, 16rem);
+      letter-spacing: -0.06em;
+      line-height: 0.8;
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+    }
+    .hero-title .line2 {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 900;
+      font-size: 0.28em;
+      letter-spacing: 0.04em;
+      color: var(--metal);
+      margin-top: calc(var(--grid)*2);
+      font-style: italic;
+    }
+    .hero-title span {
+      display: inline-block;
+      padding: 0 0.05em;
+      border: 3px solid transparent;
+      transition: border-color 0.05s, color 0.05s;
+    }
+    .hero-title span:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .hero-bottom {
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: var(--grid);
+      padding-top: var(--grid);
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+    .hero-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--metal);
+      line-height: 2;
+    }
+    .hero-scroll {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--metal);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after { content: "↓"; font-size: 1.3em; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--ink); color: var(--paper);
+      padding: 10px calc(var(--grid)*5);
+      display: flex; gap: calc(var(--grid)*2); align-items: center; flex-wrap: wrap;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    nav a {
+      color: var(--paper); text-decoration: none;
+      padding: 5px 0;
+      position: relative;
+    }
+    nav a::after {
+      content: ""; position: absolute; bottom: 3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--metal);
+      transition: width 0.15s;
+    }
+    nav a:hover::after { width: 100%; }
+    nav .nav-meta { color: var(--metal); margin-left: auto; }
+
+    /* ── Anchor sections ── */
+    section { padding: calc(var(--grid)*6) calc(var(--grid)*5); scroll-margin-top: 56px; }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--metal);
+      margin-bottom: calc(var(--grid)*4);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ""; flex: 1; height: 1px; background: rgba(0,0,0,0.15);
+    }
+
+    /* ── Product Grid ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 0;
+    }
+
+    /* ── Card ── */
+    .card {
+      border-top: var(--border);
+      border-right: var(--border);
+      padding: calc(var(--grid)*3) calc(var(--grid)*3);
+      transition: background 0.12s;
+      display: flex; flex-direction: column; min-height: 280px;
+      position: relative;
+    }
+    .card:hover { background: rgba(0,0,0,0.02); }
+    .card:first-child { border-top-left-radius: 0; }
+    .card:nth-last-child(-n+2) { border-bottom: none; }
+    .card:nth-child(odd):last-child { border-right: none; }
+
+    .card-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--metal); margin-bottom: var(--grid);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-tag::before {
+      content: "◆"; font-size: 0.5em; color: var(--ink);
     }
     .card h2 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 900;
-      font-size: 1.85rem;
-      letter-spacing: -0.04em;
-      line-height: 1;
+      font-family: 'Inter', sans-serif; font-weight: 900;
+      font-size: 2rem; letter-spacing: -0.04em; line-height: 1;
       margin-bottom: var(--grid);
     }
     .card h2 em {
@@ -217,288 +197,279 @@
     }
     .card p {
       font-family: 'Noto Serif JP', serif;
-      font-size: 0.88rem;
-      line-height: 1.85;
-      flex: 1;
-      margin-bottom: var(--grid);
-      max-width: 60ch;
+      font-size: 0.9rem; line-height: 1.9;
+      flex: 1; margin-bottom: var(--grid);
+      color: #444;
     }
     .card-link {
       font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 0.78rem;
-      text-decoration: none;
-      color: var(--ink);
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 2px;
+      font-weight: 700; font-size: 0.78rem;
+      text-decoration: none; color: var(--ink);
       letter-spacing: 0.06em;
-      align-self: flex-start;
-      transition: color 0.1s, border-color 0.1s;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.1s, gap 0.1s;
     }
-    .card-link:hover {
-      color: var(--flash);
-      border-color: var(--flash);
-    }
+    .card-link::after { content: "→"; transition: transform 0.1s; }
+    .card-link:hover { color: var(--metal); gap: 12px; }
 
-    .badge-new {
-      position: absolute;
-      top: calc(var(--grid) * -0.5);
-      right: calc(var(--grid) * -0.5);
-      background: var(--flash);
-      color: var(--paper);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border: 3px solid var(--ink);
-      transform: rotate(4deg);
-      letter-spacing: 0.08em;
+    .badge {
+      position: absolute; top: -1px; right: -1px;
+      font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 14px;
+      border: var(--border); border-top: none; border-right: none;
+      background: var(--paper); color: var(--ink);
     }
-    .badge-wip {
-      position: absolute;
-      top: calc(var(--grid) * -0.5);
-      right: calc(var(--grid) * -0.5);
+    .badge.new  { background: var(--ink); color: var(--paper); }
+    .badge.wip  { background: var(--paper); color: var(--ink); }
+
+    /* ── Modules / Apps index ── */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px; background: rgba(0,0,0,0.1);
+    }
+    .link-card {
       background: var(--paper);
-      color: var(--ink);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border: 3px solid var(--ink);
-      transform: rotate(-3deg);
-      letter-spacing: 0.08em;
+      padding: calc(var(--grid)*2) calc(var(--grid)*3);
+      border: none;
+      text-decoration: none; color: var(--ink);
+      display: block;
+      transition: background 0.1s;
+    }
+    .link-card:hover { background: rgba(0,0,0,0.04); }
+    .link-card h3 {
+      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.2rem;
+      letter-spacing: -0.03em; margin-bottom: 4px;
+    }
+    .link-card h3 em { font-style: normal; font-family: 'Noto Serif JP', serif; font-weight: 900; }
+    .link-card small {
+      font-family: 'Space Mono', monospace; font-size: 0.7rem;
+      color: var(--metal); letter-spacing: 0.1em;
     }
 
-    /* ─── Footer ─── */
+    /* ── Footer ── */
     footer {
-      border-top: 4px solid var(--ink);
-      margin-top: calc(var(--grid)*8);
-      padding: calc(var(--grid)*4) calc(var(--grid)*5);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: var(--grid);
-      background: var(--ink);
-      color: var(--paper);
-      font-size: 0.82rem;
-    }
-    footer .footer-left {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
+      border-top: var(--border);
+      padding: calc(var(--grid)*5) calc(var(--grid)*5);
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: var(--grid);
+      font-family: 'Space Mono', monospace; font-size: 0.78rem;
       letter-spacing: 0.08em;
-      line-height: 1.8;
     }
-    footer .footer-right a {
-      color: var(--port);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-left: var(--grid);
-      border-bottom: 2px solid var(--port);
-      transition: border-color 0.1s;
-    }
-    footer .footer-right a:hover { border-color: var(--acid); }
+    footer a { color: var(--ink); text-decoration: none; }
+    footer a:hover { color: var(--metal); }
+    .footer-meta { color: var(--metal); font-size: 0.72rem; text-align: right; line-height: 2; }
 
-    /* ─── ASCII art marquee ─── */
-    .marquee-band {
-      border-top: 3px solid var(--ink);
-      border-bottom: 3px solid var(--ink);
-      background: var(--acid);
-      overflow: hidden;
-      padding: 8px 0;
+    /* ── Docs pages ── */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: calc(var(--grid)*5);
+      padding: calc(var(--grid)*5);
+      max-width: 1200px; margin: 0 auto;
     }
-    .marquee-inner {
-      white-space: nowrap;
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-      animation: scroll 25s linear infinite;
+    .docs-sidebar { border-right: 1px solid rgba(0,0,0,0.12); padding-right: calc(var(--grid)*4); }
+    .eyebrow {
+      font-family: 'Space Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--metal);
+      padding-left: 8px; border-left: 2px solid var(--ink);
+      margin: calc(var(--grid)*3) 0 var(--grid);
     }
-    @keyframes scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .docs-sidebar nav { display: flex; flex-direction: column; }
+    .docs-sidebar a {
+      display: block; padding: 4px 14px; text-decoration: none;
+      color: var(--ink); font-size: 0.82rem;
+      border-left: 2px solid transparent; margin-bottom: 1px;
     }
+    .docs-sidebar a:hover, .docs-sidebar a.active {
+      background: rgba(0,0,0,0.04); border-left-color: var(--ink); font-weight: 700;
+    }
+    .docs-content h2 {
+      font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.8rem;
+      letter-spacing: -0.05em; margin-bottom: var(--grid);
+      border-bottom: 2px solid rgba(0,0,0,0.12); padding-bottom: var(--grid);
+    }
+    .docs-content h3 {
+      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem;
+      margin-top: calc(var(--grid)*4); margin-bottom: var(--grid);
+      border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 4px;
+    }
+    .docs-content p { font-family: 'Noto Serif JP', serif; font-size: 0.9rem; line-height: 1.9; margin-bottom: var(--grid); max-width: 70ch; }
+    .docs-content pre {
+      background: var(--ink); color: var(--paper);
+      font-family: 'Space Mono', monospace; font-size: 0.82rem;
+      padding: var(--grid) calc(var(--grid)*1.5); overflow-x: auto;
+      margin-bottom: var(--grid); line-height: 1.8;
+    }
+    .docs-content code {
+      font-family: 'Space Mono', monospace; font-size: 0.82rem;
+      background: rgba(0,0,0,0.07); color: var(--ink); padding: 2px 7px;
+    }
+    .webmcp-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--paper);
+      font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; padding: 8px 20px; text-decoration: none;
+      border: 2px solid var(--ink); margin: var(--grid) 0;
+      transition: transform 0.08s;
+    }
+    .webmcp-badge::before { content: "▶"; font-size: 0.7em; }
+    .webmcp-badge:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--metal); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: var(--grid); font-size: 0.85rem; }
+    th { text-align: left; padding: 10px 14px; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.75rem; border-bottom: 2px solid var(--ink); }
+    td { padding: 8px 14px; border-bottom: 1px solid rgba(0,0,0,0.08); font-family: 'Space Mono', monospace; }
+    tr:last-child td { border-bottom: none; }
 
-    /* ─── Glitch on hover ─── */
-    .glitch-hover:hover {
-      animation: glitch 0.25s steps(3) 2;
+    footer.docs-footer {
+      border-top: 1px solid rgba(0,0,0,0.12); padding: var(--grid) calc(var(--grid)*5);
+      display: flex; justify-content: space-between; font-size: 0.78rem;
+      font-family: 'Space Mono', monospace; color: var(--metal); max-width: 1200px; margin: 0 auto;
     }
-    @keyframes glitch {
-      0%   { transform: translate(-2px,-1px); }
-      25%  { transform: translate(2px, 1px); filter: hue-rotate(40deg); }
-      50%  { transform: translate(-1px, 2px); filter: hue-rotate(-40deg); }
-      75%  { transform: translate(1px,-2px); }
-      100% { transform: translate(0); }
-    }
+    footer.docs-footer a { color: var(--ink); text-decoration: none; }
 
     @media (max-width: 768px) {
+      .hero-title { font-size: clamp(3.5rem, 16vw, 10rem); }
       .product-grid { grid-template-columns: 1fr; }
-      header { padding: var(--grid) calc(var(--grid)*2); }
-      main { padding: calc(var(--grid)*3) calc(var(--grid)*2); }
+      .docs-layout { grid-template-columns: 1fr; }
+      .docs-sidebar { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); padding-bottom: var(--grid); }
+      nav { gap: var(--grid); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══ Header ══ -->
-  <header>
-    <h1>
-      HÜGEL<em>T</em>N
-      <span>KOBE / JP — SINCE 2024</span>
-    </h1>
-    <nav>
-      <a href="/docs">Docs</a>
-      <a href="/modules">Modules</a>
-      <a href="/apps">Apps</a>
-      <a href="https://x.com/hugelton_">X</a>
-    </nav>
-  </header>
-
-  <!-- ══ Marquee ══ -->
-  <div class="marquee-band">
-    <div class="marquee-inner">
-      &nbsp;&nbsp;★ KOBE MODULAR SCENE ★ EUROPEAN STANDARD + JAPANESE CRAFT ★ OPEN SOURCE HARDWARE ★ HÜGELTON INSTRUMENTS ★ CZ-101 PHASE DISTORTION SYNTH ★ PLAYDATE SOUND GENERATORS ★ LUAJIT RHYTHM COMPOSER ★&nbsp;&nbsp;
-      &nbsp;&nbsp;★ KOBE MODULAR SCENE ★ EUROPEAN STANDARD + JAPANESE CRAFT ★ OPEN SOURCE HARDWARE ★ HÜGELTON INSTRUMENTS ★ CZ-101 PHASE DISTORTION SYNTH ★ PLAYDATE SOUND GENERATORS ★ LUAJIT RHYTHM COMPOSER ★&nbsp;&nbsp;
+  <!-- ══ Hero ══ -->
+  <section class="hero">
+    <div>
+      <p class="hero-eyebrow">KOBE / JP — EST. 2024 — DIY / OSS / COUNTER-CULTURE</p>
+      <h1 class="hero-title">
+        HÜGEL<span>H</span><span>Ü</span><span>G</span><span>E</span><span>L</span><em class="line2"> submarine tone laboratories</em>
+      </h1>
     </div>
-  </div>
+    <div class="hero-bottom">
+      <div class="hero-meta">
+        <div>神戸市中央区 — CHUO-KU, KOBE, JAPAN</div>
+        <div>OPEN SOURCE HARDWARE — MODULAR SYNTH — LUAJIT — RP2040</div>
+      </div>
+      <a class="hero-scroll" href="#projects">scroll</a>
+    </div>
+  </section>
 
-  <!-- ══ Main ══ -->
-  <main>
+  <!-- ══ Nav ══ -->
+  <nav>
+    <a href="#projects">Products</a>
+    <a href="/docs">Docs</a>
+    <a href="https://x.com/hugelton_">X / @hugelton_</a>
+    <a href="https://note.com/4563photo">note</a>
+    <a href="https://github.com/mewdelic">GitHub</a>
+    <span class="nav-meta">Hügelton Instruments</span>
+  </nav>
 
-    <p class="eyebrow">// Instruments &amp; Tools — Modular / DIY / Open Source / Kobe</p>
+  <!-- ══ Projects ══ -->
+  <section id="projects">
+    <p class="section-label">Instruments &amp; Tools — 2024 — 2026</p>
 
     <div class="product-grid">
 
       <div class="card">
-        <div class="badge-new">NEW</div>
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>K<em>1</em>12<em>E</em></h2>
-          <p>Dual VCF / State Variable Filter. 2系統のステートバリアブル・フィルター。ローパス・バンドパス・ハイパス出力を同時に備える。</p>
-          <a class="card-link" href="/modules/k112e.html">詳細 →</a>
-        </div>
+        <div class="badge new">IN DEV</div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>K<em>1</em>12<em>E</em></h2>
+        <p>Dual VCF / State Variable Filter. 2系統のステートバリアブル・フィルター。ローパス・バンドパス・ハイパスを同時に出力。</p>
+        <a class="card-link" href="/modules/k112e.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="badge-new">NEW</div>
-        <div class="card-tag hardware">Hardware • DIY</div>
-        <div class="card-body">
-          <h2>P<em>olume</em></h2>
-          <p>Capacitive Touch Keyboard / CV Interface. 12鍵のキャパシタブ・タッチキーボード。6CV + 6Gate 出力でモジュラーと統合可能。</p>
-          <a class="card-link" href="/polume.html">詳細 →</a>
-        </div>
+        <div class="badge new">IN DEV</div>
+        <div class="card-tag">Hardware / DIY</div>
+        <h2>P<em>olume</em></h2>
+        <p>Capacitive Touch Keyboard / CV Interface. 12鍵のキャパシタブ・タッチキーボード。6CV + 6Gate 出力。</p>
+        <a class="card-link" href="/polume.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="badge-wip">WIP</div>
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body glitch-hover">
-          <h2>C<em>lock</em>worker</h2>
-          <p>96 PPQN Eurorack Clock Hub. 内部クロック / USB MIDI / UART DIN Sync の3モードを 4PDT スイッチで即時切替。</p>
-          <a class="card-link" href="/modules/clockworker.html">詳細 →</a>
-        </div>
+        <div class="badge wip">WIP</div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>C<em>lock</em>worker</h2>
+        <p>96 PPQN Clock Hub. 内部クロック / USB MIDI / UART DIN Sync を 4PDT スイッチで即時切替。 Waveshare RP2040 Zero ベース。</p>
+        <a class="card-link" href="/modules/clockworker.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="badge-wip">WIP</div>
-        <div class="card-tag software">Software • CLI</div>
-        <div class="card-body glitch-hover">
-          <h2>Q<em>uex</em></h2>
-          <p>LuaJIT Rhythm Composer. LuaJIT上で動作するリズム・シーケンサー。ライブコーディングによるパターン生成に対応。</p>
-          <a class="card-link" href="/apps/quex.html">詳細 →</a>
-        </div>
+        <div class="badge wip">WIP</div>
+        <div class="card-tag">Software / CLI</div>
+        <h2>Q<em>uex</em></h2>
+        <p>LuaJIT Rhythm Composer. LuaJIT上で動作するリズム・シーケンサー。ライブコーディング対応。</p>
+        <a class="card-link" href="/apps/quex.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • DIY</div>
-        <div class="card-body">
-          <h2>CrispyZ<em>ebra</em></h2>
-          <p>CZ-101 Phase Distortion Synth on RP2040. ローランド CZ-101 のフェーズディストーションを Raspberry Pi Pico で再現。</p>
-          <a class="card-link" href="/apps/picocz.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / DIY</div>
+        <h2>CrispyZ<em>ebra</em></h2>
+        <p>CZ-101 Phase Distortion Synth on RP2040. ローランド CZ-101 のフェーズディストーションを Raspberry Pi Pico で再現。</p>
+        <a class="card-link" href="/apps/picocz.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • DIY</div>
-        <div class="card-body">
-          <h2>SumaSh<em>ield</em></h2>
-          <p>Pico Audio/MIDI Shield. PT8211 DAC + オーディオ出力 / MIDI 入出力を搭載した RP2040 Pico 用シールド基板。</p>
-          <a class="card-link" href="/apps/sumashield.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / DIY</div>
+        <h2>SumaSh<em>ield</em></h2>
+        <p>Pico Audio/MIDI Shield. PT8211 DAC + オーディオ出力 / MIDI 入出力を搭載した RP2040 Pico 用シールド基板。</p>
+        <a class="card-link" href="/apps/sumashield.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>K<em>1</em>02<em>E</em></h2>
-          <p>Digital Compound Oscillator. 2レイヤーの波形と FM/AM 変調を備えたデジタルオシレーター。</p>
-          <a class="card-link" href="/modules/k102e.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>K<em>1</em>02<em>E</em></h2>
+        <p>Digital Compound Oscillator. 2レイヤーの波形と複雑な FM / AM 変調を備えたデジタルオシレーター。</p>
+        <a class="card-link" href="/modules/k102e.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>K<em>1</em>04<em>E</em></h2>
-          <p>Digital Envelope Generator. 2系統のADSRエンベロープを同時生成するデジタルEG。</p>
-          <a class="card-link" href="/modules/k104e.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>K<em>1</em>04<em>E</em></h2>
+        <p>Digital Envelope Generator. 2系統の ADSR エンベロープを同時生成するデジタルEG。</p>
+        <a class="card-link" href="/modules/k104e.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>The E<em>arth</em> M<em>odule</em></h2>
-          <p>Networked Environmental Modulator. 温度・湿度・明るなど環境センサー値をモジュラー信号に変換するネットワーク対応モジュール。</p>
-          <a class="card-link" href="/modules/earth.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>The E<em>arth</em> M<em>odule</em></h2>
+        <p>Networked Environmental Modulator. 温湿度・明るさなどの環境センサー値をモジュラー信号に変換するネットワーク対応モジュール。</p>
+        <a class="card-link" href="/modules/earth.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag hardware">Hardware • Eurorack</div>
-        <div class="card-body">
-          <h2>S<em>yncB</em>ar</h2>
-          <p>SBX-1 Style Clock / MIDI Sync Module. Arturia SBX-1クローン。RP2040ベースでBuild Your Own审美的</p>
-          <a class="card-link" href="/modules/syncbar.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Hardware / Eurorack</div>
+        <h2>S<em>yncB</em>ar</h2>
+        <p>SBX-1 Style Clock / MIDI Sync Module. Arturia SBX-1クローン。RP2040 ベース。</p>
+        <a class="card-link" href="/modules/syncbar.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag software">Software • VCV Rack</div>
-        <div class="card-body">
-          <h2>VCV Rack <em>Modules</em></h2>
-          <p>K-Series Modules for VCV Rack. K102E / K104E をソフトウェアでシミュレート。</p>
-          <a class="card-link" href="/modules/vcvrack.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Software / VCV Rack</div>
+        <h2>VCV Rack <em>Modules</em></h2>
+        <p>K102E / K104E を VCV Rack 上でシミュレートするソフトウェアモジュール集。</p>
+        <a class="card-link" href="/modules/vcvrack.html">詳細</a>
       </div>
 
       <div class="card">
-        <div class="card-tag software">Software • Playdate</div>
-        <div class="card-body">
-          <h2><em>P.O.S.G.</em></h2>
-          <p>Playdate Organic Sound Generators. Playdateハンドヘルド向けオルガンサウンド・ジェネレーター集。</p>
-          <a class="card-link" href="/apps/posg.html">詳細 →</a>
-        </div>
+        <div class="card-tag">Software / Playdate</div>
+        <h2><em>P.O.S.G.</em></h2>
+        <p>Playdate Organic Sound Generators. Playdate ハンドヘルド向けオルガンサウンドジェネレーター集。</p>
+        <a class="card-link" href="/apps/posg.html">詳細</a>
       </div>
 
-    </div><!-- /product-grid -->
-
-  </main>
+    </div>
+  </section>
 
   <!-- ══ Footer ══ -->
   <footer>
-    <div class="footer-left">
-      <div>HÜGELTON INSTRUMENTS</div>
-      <div>神戸市中央区 — KOBE CHUO-KU, JAPAN</div>
-      <div>&nbsp;</div>
-      <div style="opacity:0.4; font-size:0.68rem; letter-spacing:0.12em;">OSS / DIY / COUNTER-CULTURE // EST. 2024</div>
-    </div>
-    <div class="footer-right">
-      <a href="https://x.com/hugelton_">@hugelton_</a>
+    <div>© 2024 — 2026 HÜGELTON INSTRUMENTS · 神戸市中央区 · KOBE, JAPAN</div>
+    <div>
+      <a href="https://github.com/mewdelic">GitHub</a> &ensp;
+      <a href="https://x.com/hugelton_">@hugelton_</a> &ensp;
       <a href="https://note.com/4563photo">note</a>
-      <a href="https://github.com/mewdelic">GitHub</a>
     </div>
   </footer>
 

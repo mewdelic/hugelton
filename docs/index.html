@@ -8,125 +8,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #080808; --paper: #ece8dc; --port: #7fa8c9;
-      --acid: #e0ff1a; --flash: #ff2255; --void: #1a0a2e;
-      --grid: 8px;
-      --border: 3px solid var(--ink);
-      --shadow: 6px 6px 0 var(--ink);
-    }
-    html::before {
-      content: ""; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 256px;
-    }
-    body { background: var(--paper); color: var(--ink); font-family: 'Inter', 'Hiragino Gothic Pro', 'Noto Sans JP', sans-serif; line-height: 1.5; font-size: 16px; }
+    :root { --ink:#0f0f0f; --paper:#f2efea; --metal:#888880; --border:2px solid var(--ink); --grid:8px; }
+    html::before { content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.02; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Inter', 'Hiragino Gothic Pro', 'Noto Sans JP', sans-serif; line-height: 1.55; font-size: 17px; }
 
-    header {
-      border-bottom: 4px solid var(--ink);
-      padding: calc(var(--grid)*3) calc(var(--grid)*5);
-      display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: var(--grid); background: var(--ink); color: var(--paper);
-    }
-    header h1 {
-      font-family: 'Inter', sans-serif; font-weight: 900;
-      font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: -0.05em;
-    }
-    header h1 em { font-style: normal; font-family: 'Noto Serif JP', serif; color: var(--port); }
-    nav a {
-      font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.08em; text-decoration: none; color: var(--paper);
-      border: 2px solid var(--port); padding: 5px 16px; margin-left: 6px;
-      transition: transform 0.08s, background 0.08s;
-    }
-    nav a:hover { background: var(--port); color: var(--ink); transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--acid); }
+    header { border-bottom: var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+    header h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: -0.05em; }
+    header h1 em { font-style: normal; font-family: 'Noto Serif JP', serif; color: var(--metal); }
+    nav a { font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--ink); padding: 2px 0; margin-left: 20px; }
+    nav a:hover { color: var(--metal); border-color: var(--metal); }
 
-    .docs-layout {
-      display: grid; grid-template-columns: 220px 1fr;
-      gap: calc(var(--grid)*5); padding: calc(var(--grid)*5);
-      max-width: 1200px; margin: 0 auto;
-    }
-    .docs-sidebar { border-right: var(--border); padding-right: calc(var(--grid)*4); }
-    .eyebrow {
-      font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--port);
-      padding-left: 8px; border-left: 3px solid var(--acid);
-      margin-bottom: var(--grid); margin-top: calc(var(--grid)*2);
-    }
+    .docs-layout { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 48px; max-width: 1200px; margin: 0 auto; }
+    .docs-sidebar { border-right: 1px solid rgba(0,0,0,0.1); padding-right: 40px; }
+    .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--metal); padding-left: 8px; border-left: 2px solid var(--ink); margin: 32px 0 10px; }
     .eyebrow:first-child { margin-top: 0; }
     .docs-sidebar nav { display: flex; flex-direction: column; }
-    .docs-sidebar a {
-      display: block; padding: 5px 14px; text-decoration: none; color: var(--ink);
-      font-size: 0.82rem; border-left: 3px solid transparent; margin-bottom: 1px;
-    }
-    .docs-sidebar a:hover { background: var(--acid); border-left-color: var(--ink); font-weight: 700; }
-    .docs-sidebar a.active { background: var(--acid); border-left-color: var(--ink); font-weight: 700; }
+    .docs-sidebar a { display: block; padding: 4px 14px; text-decoration: none; color: var(--ink); font-size: 0.82rem; border-left: 2px solid transparent; margin-bottom: 1px; }
+    .docs-sidebar a:hover, .docs-sidebar a.active { background: rgba(0,0,0,0.04); border-left-color: var(--ink); font-weight: 700; }
 
-    .docs-content h2 {
-      font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.5rem;
-      letter-spacing: -0.05em; margin-bottom: var(--grid);
-      border-bottom: 4px solid var(--ink); padding-bottom: var(--grid);
-    }
-    .docs-content h3 {
-      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.15rem;
-      margin-top: calc(var(--grid)*4); margin-bottom: var(--grid);
-      border-bottom: 2px solid var(--ink); padding-bottom: 4px;
-    }
-    .docs-content p {
-      font-family: 'Noto Serif JP', serif; font-size: 0.9rem;
-      line-height: 1.9; margin-bottom: var(--grid); max-width: 70ch;
-    }
-    .docs-content pre {
-      background: var(--void); color: var(--acid);
-      font-family: 'Space Mono', monospace; font-size: 0.82rem;
-      padding: var(--grid) calc(var(--grid)*1.5); overflow-x: auto;
-      border: var(--border); margin-bottom: var(--grid);
-    }
-    .docs-content code {
-      font-family: 'Space Mono', monospace; font-size: 0.82rem;
-      background: var(--ink); color: var(--port); padding: 2px 7px;
-    }
-    .webmcp-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--acid); color: var(--ink);
-      font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.06em; padding: 8px 18px; text-decoration: none;
-      border: 3px solid var(--ink); margin: var(--grid) 0;
-      transition: transform 0.08s;
-    }
-    .webmcp-badge:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink); }
+    .docs-content h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -0.05em; margin-bottom: 10px; }
+    .docs-content h2 em { font-style: normal; font-family: 'Noto Serif JP', serif; font-size: 0.35em; letter-spacing: 0; color: var(--metal); display: block; margin-top: 4px; }
+    .docs-content h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem; margin-top: 48px; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 4px; }
+    .docs-content p { font-family: 'Noto Serif JP', serif; font-size: 0.9rem; line-height: 1.95; margin-bottom: 16px; max-width: 70ch; }
+    .docs-content pre { background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: 0.82rem; padding: var(--grid) calc(var(--grid)*1.5); overflow-x: auto; margin-bottom: 16px; line-height: 1.9; }
+    .docs-content code { font-family: 'Space Mono', monospace; font-size: 0.82rem; background: rgba(0,0,0,0.07); color: var(--ink); padding: 2px 7px; }
+    .webmcp-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; padding: 8px 20px; text-decoration: none; border: 2px solid var(--ink); margin: 16px 0; }
     .webmcp-badge::before { content: "▶"; font-size: 0.7em; }
-
-    table { width: 100%; border-collapse: collapse; border: var(--border); margin-bottom: var(--grid); }
-    td { font-size: 0.82rem; padding: 8px 14px; border-bottom: 1px solid #ccc; font-family: 'Space Mono', monospace; }
-    th { font-size: 0.78rem; font-weight: 700; padding: 10px 14px; border-bottom: 3px solid var(--ink); text-align: left; }
+    .webmcp-badge:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--metal); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.85rem; }
+    th { text-align: left; padding: 10px 14px; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.75rem; border-bottom: 2px solid var(--ink); }
+    td { padding: 8px 14px; border-bottom: 1px solid rgba(0,0,0,0.08); font-family: 'Space Mono', monospace; }
     tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(127,168,201,0.12); }
 
-    footer {
-      border-top: 4px solid var(--ink); margin-top: calc(var(--grid)*6);
-      padding: var(--grid) calc(var(--grid)*5);
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--grid);
-      background: var(--ink); color: var(--paper); font-size: 0.82rem;
-      font-family: 'Space Mono', monospace;
-    }
-    footer a { color: var(--port); text-decoration: none; font-weight: 700; }
-    footer a:hover { color: var(--acid); }
+    footer { border-top: 1px solid rgba(0,0,0,0.12); padding: 16px 48px; display: flex; justify-content: space-between; font-size: 0.78rem; font-family: 'Space Mono', monospace; color: var(--metal); margin-top: 64px; }
+    footer a { color: var(--ink); text-decoration: none; }
 
-    @media (max-width: 768px) {
+    @media(max-width:768px){
+      .hero-title { font-size: clamp(4rem, 16vw, 9rem); }
+      .product-grid { grid-template-columns: 1fr; }
       .docs-layout { grid-template-columns: 1fr; }
-      .docs-sidebar { border-right: none; border-bottom: var(--border); padding-right: 0; padding-bottom: var(--grid); }
+      .docs-sidebar { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: var(--grid); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>HÜGEL<em>T</em>N&ensp;<span style="font-weight:400; font-family:'Space Mono'; font-size:0.55em; letter-spacing:0.12em;">DOCS</span></h1>
+    <h1>HÜGEL<em>T</em>N <span style="font-size:0.35em; font-weight:400; letter-spacing:0.12em; color:var(--metal);">DOCS</span></h1>
     <nav>
       <a href="/">Top</a>
-      <a href="/modules">Modules</a>
-      <a href="/apps">Apps</a>
+      <a href="https://x.com/hugelton_">@hugelton_</a>
+      <a href="https://github.com/mewdelic">GitHub</a>
     </nav>
   </header>
 
@@ -157,23 +90,25 @@
     </aside>
 
     <article class="docs-content">
+      <h2>はじめに<em>Introduction</em></h2>
 
-      <h2>はじめに<em style="font-family:'Noto Serif JP',serif; font-size:0.5em; letter-spacing:0; display:block; margin-top:4px; color:var(--port);">Introduction</em></h2>
       <p>Hügelton Instruments のドキュメントへ。神戸を拠点に、オープンソース・DIY・カウンターカルチャーをモットーに電子楽器を設計しています。</p>
-
       <a class="webmcp-badge" href="webmcp://hugelton.com/docs">WebMCP で開く</a>
 
-      <h3>All Projects</h3>
+      <h3>Projects</h3>
       <table>
         <tr><th>Project</th><th>Type</th><th>Status</th><th>Platform</th></tr>
         <tr><td><strong>K112E</strong></td><td>Dual VCF</td><td>開発中</td><td>Eurorack</td></tr>
         <tr><td><strong>Polume</strong></td><td>Touch Keyboard</td><td>開発中</td><td>DIY / CV</td></tr>
         <tr><td><strong>Clockworker</strong></td><td>Clock Hub</td><td>試作中</td><td>Eurorack</td></tr>
-        <tr><td><strong>Quex</strong></td><td>Rhythm Composer</td><td>開発中</td><td>LuaJIT CLI</td></tr>
+        <tr><td><strong>Quex</strong></td><td>Rhythm Composer</td><td>開発中</td><td>LuaJIT</td></tr>
         <tr><td><strong>CrispyZebra</strong></td><td>PD Synth</td><td>試作中</td><td>RP2040</td></tr>
         <tr><td><strong>SumaShield</strong></td><td>Audio Shield</td><td>開発中</td><td>RP2040</td></tr>
-        <tr><td><strong>K102E</strong></td><td>VCO</td><td>完成</td><td>Eurorack</td></tr>
-        <tr><td><strong>K104E</strong></td><td>EG</td><td>完成</td><td>Eurorack</td></tr>
+        <tr><td><strong>K102E</strong></td><td>VCO</td><td>完了</td><td>Eurorack</td></tr>
+        <tr><td><strong>K104E</strong></td><td>EG</td><td>完了</td><td>Eurorack</td></tr>
+        <tr><td><strong>The Earth Module</strong></td><td>Env Modulator</td><td>完成</td><td>Eurorack</td></tr>
+        <tr><td><strong>P.O.S.G.</strong></td><td>Sound Generators</td><td>公開</td><td>Playdate</td></tr>
+        <tr><td><strong>VCV Rack Modules</strong></td><td>K-Series</td><td>公開</td><td>Software</td></tr>
       </table>
 
       <h3>Philosophy</h3>
@@ -185,15 +120,10 @@ KOBE   —  港町から世界へ</pre>
     </article>
   </div>
 
-  <footer>
-    <div>
-      <div>HÜGELTON INSTRUMENTS</div>
-      <div>神戸市中央区 — KOBE, JAPAN</div>
-    </div>
-    <div>
-      <a href="https://x.com/hugelton_">@hugelton_</a>
-      <a href="https://github.com/mewdelic">GitHub</a>
-    </div>
+  <footer class="docs-footer">
+    <span>HÜGELTON INSTRUMENTS — Kobe, Japan</span>
+    <span><a href="https://x.com/hugelton_">@hugelton_</a> · <a href="https://github.com/mewdelic">GitHub</a></span>
   </footer>
+
 </body>
 </html>
