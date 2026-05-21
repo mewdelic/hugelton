@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs — Hügelton Instruments</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@700;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f0ece2;
+      --acid: #c8ff00;
+      --blue: #0055ff;
+      --pink: #ff3366;
+      --grid: 8px;
+      --border: 3px solid var(--black);
+      --shadow: 5px 5px 0 var(--black);
+    }
+    body { background: var(--white); color: var(--black); font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+    header {
+      border-bottom: var(--border);
+      padding: calc(var(--grid)*2) calc(var(--grid)*4);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--grid);
+    }
+    header h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.03em; }
+    nav a { font-weight: 700; text-decoration: none; color: var(--black); border: 2px solid var(--black); padding: 4px 14px; margin-left: 6px; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: calc(var(--grid)*4);
+      padding: calc(var(--grid)*4);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .docs-sidebar {
+      border-right: var(--border);
+      padding-right: calc(var(--grid)*3);
+    }
+    .docs-sidebar .section-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border-left: 3px solid var(--blue);
+      padding-left: 8px;
+      margin-bottom: var(--grid);
+    }
+    .docs-sidebar nav { display: flex; flex-direction: column; }
+    .docs-sidebar a {
+      display: block;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.82rem;
+      border-left: 3px solid transparent;
+      margin-bottom: 2px;
+    }
+    .docs-sidebar a:hover { background: var(--acid); border-left-color: var(--black); font-weight: 700; }
+    .docs-sidebar a.active { background: var(--acid); border-left-color: var(--black); font-weight: 700; }
+
+    .docs-content h2 {
+      font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em; margin-bottom: var(--grid);
+    }
+    .docs-content h3 {
+      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem; margin-top: calc(var(--grid)*3); margin-bottom: var(--grid);
+      border-bottom: 2px solid var(--black); padding-bottom: 4px;
+    }
+    .docs-content p { font-size: 0.88rem; margin-bottom: var(--grid); max-width: 75ch; }
+    .docs-content pre {
+      background: var(--black); color: var(--acid); padding: var(--grid); font-size: 0.82rem;
+      overflow-x: auto; border: var(--border); margin-bottom: var(--grid);
+    }
+    .docs-content code {
+      background: var(--black); color: var(--acid); padding: 2px 6px; font-size: 0.82rem;
+    }
+    .webmcp-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--blue); color: var(--white);
+      padding: 6px 14px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+      border: 2px solid var(--black);
+      margin-bottom: var(--grid); text-decoration: none;
+    }
+    .webmcp-badge:hover { filter: brightness(1.1); }
+
+    footer { border-top: var(--border); padding: var(--grid) calc(var(--grid)*4); font-size: 0.75rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--grid); }
+    footer a { color: var(--black); text-decoration: none; font-weight: 700; }
+
+    @media (max-width: 768px) { .docs-layout { grid-template-columns: 1fr; } .docs-sidebar { border-right: none; border-bottom: var(--border); padding-right: 0; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>HÜGEL<em>TON</em>&ensp;<span style="font-weight:400; font-family:'Space Mono'; font-size:0.6em; letter-spacing:0.1em;">DOCS</span></h1>
+    <nav>
+      <a href="/">Top</a>
+      <a href="/modules">Modules</a>
+      <a href="/apps">Apps</a>
+    </nav>
+  </header>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <p class="section-label">// Getting Started</p>
+      <nav>
+        <a class="active" href="/docs/index.html">はじめに</a>
+        <a href="/docs/cli-reference.html">CLI Reference</a>
+      </nav>
+      <br>
+      <p class="section-label">// Modules</p>
+      <nav>
+        <a href="/modules/k102e.html">K102E</a>
+        <a href="/modules/k104e.html">K104E</a>
+        <a href="/modules/k112e.html">K112E</a>
+        <a href="/modules/earth.html">The Earth Module</a>
+        <a href="/modules/clockworker.html">Clockworker</a>
+      </nav>
+      <br>
+      <p class="section-label">// Apps / DIY</p>
+      <nav>
+        <a href="/polume.html">Polume</a>
+        <a href="/apps/quex.html">Quex</a>
+        <a href="/apps/picocz.html">CrispyZebra</a>
+        <a href="/apps/sumashield.html">SumaShield</a>
+        <a href="/apps/vcvrack.html">VCV Rack Modules</a>
+      </nav>
+    </aside>
+
+    <article class="docs-content">
+
+      <h2>はじめに</h2>
+      <p>Hügelton Instruments のドキュメントへようこそ。</p>
+      <p>Hügeltonは神戸を拠点にする電子楽器／モジュラーシンセを自作するスタジオです。オープンソース・DIY・カウンターカルチャーをモットーに、ハードウェアからソフトウェアまで一貫して設計しています。</p>
+
+      <a class="webmcp-badge" href="webmcp://hugelton.com/docs">▶ WebMCP で開く</a>
+
+      <h3>プロジェクト一覧</h3>
+      <p>現在開発中のプロジェクト：</p>
+      <ul style="font-size:0.88rem; padding-left:1.5rem; margin-bottom:var(--grid);">
+        <li><strong>K112E</strong> — Dual VCF / State Variable Filter（開発中）</li>
+        <li><strong>Polume</strong> — 12鍵 Capacitive Touch Keyboard / CV Interface（開発中）</li>
+        <li><strong>Clockworker</strong> — 96 PPQN Eurorack Clock/DIN Sync Module（試作中）</li>
+        <li><strong>Quex</strong> — LuaJIT Rhythm Composer（開発中）</li>
+        <li><strong>CrispyZebra (PicoCZ)</strong> — CZ-101 Phase Distortion on RP2040（試作中）</li>
+      </ul>
+
+      <h3>Hügeltonの哲学</h3>
+      <p>すべてのプロジェクトは以下の原則に基づいて設計されています：</p>
+      <pre>OSS  —  すべてをオープンソースで
+DIY  —  自分で作れるものを
+RETRO  —  レトロな美学と感触を
+COUNTER-CULTURE  —  主流に抗う独自の道を</pre>
+
+      <h3>Quick Links</h3>
+      <p>
+        <a href="https://x.com/hugelton_" style="font-weight:700; border-bottom:2px solid var(--black);">X @hugelton_</a> でアップデートをフォロー<br>
+        <a href="https://note.com/4563photo" style="font-weight:700; border-bottom:2px solid var(--black);">note</a> で創作ノートを公開
+      </p>
+
+    </article>
+  </div>
+
+  <footer>
+    <span>Hügelton Instruments — Kobe, Japan</span>
+    <span><a href="https://x.com/hugelton_">X / @hugelton_</a></span>
+  </footer>
+
+</body>
+</html>

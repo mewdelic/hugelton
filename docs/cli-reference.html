@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLI Reference — Hügelton Instruments</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@700;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f0ece2;
+      --acid: #c8ff00;
+      --blue: #0055ff;
+      --grid: 8px;
+      --border: 3px solid var(--black);
+      --shadow: 5px 5px 0 var(--black);
+    }
+    body { background: var(--white); color: var(--black); font-family: 'Space Mono', monospace; line-height: 1.6; }
+    header { border-bottom: var(--border); padding: calc(var(--grid)*2) calc(var(--grid)*4); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--grid); }
+    header h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.03em; }
+    nav a { font-weight: 700; text-decoration: none; color: var(--black); border: 2px solid var(--black); padding: 4px 14px; margin-left: 6px; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .docs-layout { display: grid; grid-template-columns: 220px 1fr; gap: calc(var(--grid)*4); padding: calc(var(--grid)*4); max-width: 1200px; margin: 0 auto; }
+    .docs-sidebar { border-right: var(--border); padding-right: calc(var(--grid)*3); }
+    .docs-sidebar .section-label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); border-left: 3px solid var(--blue); padding-left: 8px; margin-bottom: var(--grid); }
+    .docs-sidebar nav { display: flex; flex-direction: column; }
+    .docs-sidebar a { display: block; padding: 6px 12px; text-decoration: none; color: var(--black); font-size: 0.82rem; border-left: 3px solid transparent; margin-bottom: 2px; }
+    .docs-sidebar a:hover { background: var(--acid); border-left-color: var(--black); font-weight: 700; }
+    .docs-sidebar a.active { background: var(--acid); border-left-color: var(--black); font-weight: 700; }
+    .docs-content h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em; margin-bottom: var(--grid); }
+    .docs-content h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem; margin-top: calc(var(--grid)*3); margin-bottom: var(--grid); border-bottom: 2px solid var(--black); padding-bottom: 4px; }
+    .docs-content p { font-size: 0.88rem; margin-bottom: var(--grid); max-width: 75ch; }
+    .docs-content pre { background: var(--black); color: var(--acid); padding: var(--grid); font-size: 0.82rem; overflow-x: auto; border: var(--border); margin-bottom: var(--grid); }
+    .docs-content code { background: var(--black); color: var(--acid); padding: 2px 6px; font-size: 0.82rem; }
+    .webmcp-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: var(--white); padding: 6px 14px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; border: 2px solid var(--black); margin-bottom: var(--grid); text-decoration: none; }
+    .webmcp-badge:hover { filter: brightness(1.1); }
+    td { font-size: 0.82rem; padding: 6px 12px; border-bottom: 1px solid #ccc; }
+    th { font-size: 0.78rem; font-weight: 700; text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--black); }
+    table { width: 100%; border: var(--border); border-collapse: collapse; margin-bottom: var(--grid); }
+    footer { border-top: var(--border); padding: var(--grid) calc(var(--grid)*4); font-size: 0.75rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--grid); }
+    @media (max-width: 768px) { .docs-layout { grid-template-columns: 1fr; } .docs-sidebar { border-right: none; border-bottom: var(--border); padding-right: 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HÜGEL<em>TON</em>&ensp;<span style="font-weight:400; font-family:'Space Mono'; font-size:0.6em; letter-spacing:0.1em;">CLI REFERENCE</span></h1>
+    <nav>
+      <a href="/">Top</a>
+      <a href="/docs">Docs</a>
+      <a href="/modules">Modules</a>
+    </nav>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <p class="section-label">// Getting Started</p>
+      <nav>
+        <a href="/docs/index.html">はじめに</a>
+        <a class="active" href="/docs/cli-reference.html">CLI Reference</a>
+      </nav>
+    </aside>
+
+    <article class="docs-content">
+
+      <h2>CLI Reference</h2>
+      <p>Hügeltonプロジェクトで使用するCLIコマンドのリファレンス。</p>
+      <a class="webmcp-badge" href="webmcp://hugelton.com/docs/cli-reference">▶ WebMCP で開く</a>
+
+      <h3>arduino-cli (RP2040)</h3>
+      <pre>arduino-cli compile -b rp2040:rp2040:rpipico \
+  --board-options="usbstack=tinyusb" \
+  --output-dir build/ \
+  --export-binaries \
+  /path/to/sketch</pre>
+
+      <h3>Wokwi CLI</h3>
+      <pre>export WOKWI_CLI_TOKEN="your-token"
+wokwi-cli /path/to/project --timeout 5000</pre>
+
+      <p>ローカル UF2/ELF を直接指定する場合は <code>wokwi.toml</code> をプロジェクトルートに配置：</p>
+      <pre>[wokwi]
+version = 1
+firmware = 'build/sketch.ino.uf2'
+elf = 'build/sketch.ino.elf'
+rfc2217ServerPort = 4000</pre>
+
+      <h3>picotool (RP2040)</h3>
+      <table>
+        <tr><th>コマンド</th><th>用途</th></tr>
+        <tr><td><code>picotool load firmware.uf2</code></td><td>UF2をPicoに書き込み</td></tr>
+        <tr><td><code>picotool info</code></td><td>接続情報</td></tr>
+        <tr><td><code>picotool save -t elf firmware.elf</code></td><td>FlashからELFに保存</td></tr>
+      </table>
+
+      <h3>Platform: CLI Tools Matrix</h3>
+      <table>
+        <tr><th>Tool</th><th>v0.26.1</th><th>Purpose</th></tr>
+        <tr><td>arduino-cli</td><td>v1.4.1</td><td>RP2040 スケッチコンパイル</td></tr>
+        <tr><td>picotool</td><td>v2.2.0</td><td>UF2 flash / RP2040 ブリッジ</td></tr>
+        <tr><td>sigrok-cli</td><td>v0.7.2</td><td>ロジアナ / シリアル解析</td></tr>
+        <tr><td>wokwi-cli</td><td>v0.26.1</td><td>シミュレーション実行</td></tr>
+        <tr><td>himalaya</td><td>v1.2.0</td><td>メール（IMAP / Gmail）</td></tr>
+      </table>
+
+      <h3>Compatibility Matrix</h3>
+      <table>
+        <tr><th>Board</th><th>Firmware</th><th>Notes</th></tr>
+        <tr><td>RP2040 Pico</td><td>.uf2 / .hex / .elf</td><td>Adafruit TinyUSB 対応</td></tr>
+        <tr><td>RP2040 Zero</td><td>.uf2 / .hex / .elf</td><td>Waveshare Zero: GP25/GP29 は Wokwi 非対応</td></tr>
+        <tr><td>RP2350</td><td>.uf2 / .elf</td><td> picotool 経由</td></tr>
+      </table>
+
+      <h3>Known Issues</h3>
+      <table>
+        <tr><th>Issue</th><th>Workaround</th></tr>
+        <tr><td>Wokwi CLI screenshot が 16×16 になる</td><td>OLED/LCD 以外はシリアルログで判定</td></tr>
+        <tr><td>GP25 / GP29 (内蔵LED)</td><td>Wokwi では GP16 等に変更</td></tr>
+        <tr><td>Wokwi トークン認証エラー</td><td>CI 用トークンを Wokwi Dashboard から取得</td></tr>
+      </table>
+
+    </article>
+  </div>
+
+  <footer>
+    <span>Hügelton Instruments — Kobe, Japan</span>
+    <span><a href="https://x.com/hugelton_">X / @hugelton_</a></span>
+  </footer>
+</body>
+</html>
