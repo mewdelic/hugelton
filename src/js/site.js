@@ -1,4 +1,5 @@
 const topbar = document.querySelector(".topbar");
+const mainShell = document.querySelector(".main-shell");
 const mobileMenu = document.querySelector(".mobile-menu");
 const mobileToggle = document.querySelector(".topbar__mobile-toggle");
 const mobileClose = document.querySelector(".mobile-menu__close");
@@ -13,11 +14,19 @@ const setMobileMenu = (open) => {
 };
 
 const syncTopbar = () => {
-  if (!topbar) return;
-  topbar.classList.toggle("is-condensed", window.scrollY > 32);
+  if (!topbar || !mainShell) return;
+  topbar.classList.toggle("is-condensed", mainShell.scrollTop > 32);
 };
 
-window.addEventListener(
+const scrollMainToHash = (hash, smooth = true) => {
+  if (!mainShell || !hash || hash === "#") return;
+  const target = document.querySelector(hash);
+  if (!target || !mainShell.contains(target)) return;
+  const top = target.offsetTop;
+  mainShell.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+};
+
+mainShell?.addEventListener(
   "scroll",
   () => {
     syncTopbar();
@@ -59,5 +68,19 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => setMobileMenu(false));
 });
 
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const href = link.getAttribute("href");
+    if (!href || href === "#") return;
+    event.preventDefault();
+    history.replaceState(null, "", href);
+    scrollMainToHash(href);
+  });
+});
+
 syncTopbar();
 setMobileMenu(false);
+
+if (location.hash) {
+  requestAnimationFrame(() => scrollMainToHash(location.hash, false));
+}

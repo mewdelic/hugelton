@@ -1,7 +1,11 @@
 .site-shell {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    padding-top: 0.8rem;
-    padding-bottom: 1rem;
+    padding: var(--shell-gutter);
+    overflow: hidden;
 }
 
 .hero-grid,
@@ -18,11 +22,17 @@
 }
 
 .main-shell {
-    margin: 0.55rem 0.8rem 0;
+    flex: 1 1 auto;
+    margin-top: var(--topbar-gap);
     border: 1px solid $line;
     border-radius: 1.5rem;
-    overflow: hidden;
+    overflow: auto;
     background: $bg;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .section-title {
@@ -77,12 +87,11 @@
 
 @media (max-width: 720px) {
     .site-shell {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        --shell-gutter: 0.5rem;
+        --topbar-gap: 0.4rem;
     }
 
     .main-shell {
-        margin: 0.4rem 0.5rem 0;
         border-radius: 1.2rem;
     }
 

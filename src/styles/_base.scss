@@ -24,6 +24,8 @@ html {
 
 :root {
     --topbar-size: 4.75rem;
+    --shell-gutter: 0.8rem;
+    --topbar-gap: 0.55rem;
 }
 
 body {
@@ -31,6 +33,7 @@ body {
     color: $ink;
     font-family: "Space Grotesk", sans-serif;
     overflow-x: hidden;
+    overflow-y: hidden;
     line-height: 1.4;
 
     // Smooth scroll and custom sleek global scrollbar
