@@ -8,14 +8,15 @@
     overflow: visible;
 }
 
+.detail-grid {
+    border-bottom: 1px solid $line;
+}
 .hero-grid,
 .showcase-grid,
 .detail-grid,
 .info-grid,
 .catalog-grid,
-.platform-grid,
-.resource-grid,
-.support-grid,
+.contact-grid,
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));

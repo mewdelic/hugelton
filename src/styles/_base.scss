@@ -26,6 +26,8 @@ html {
     --topbar-size: 4.75rem;
     --shell-gutter: 0.8rem;
     --topbar-gap: 0.55rem;
+    --scroll-progress: 0;
+    --hero-shift: 0px;
 }
 
 body {
@@ -68,4 +70,56 @@ svg {
 img {
     display: block;
     max-width: 100%;
+}
+
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 999px;
+    background: #fff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate3d(-50vw, -50vh, 0);
+    transition: opacity 120ms ease;
+}
+
+body.has-cursor-dot {
+    cursor: none;
+
+    a,
+    button,
+    [role="button"] {
+        cursor: none;
+    }
+}
+
+body.has-cursor-dot .cursor-dot {
+    opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+    .cursor-dot {
+        display: none;
+    }
+
+    body.has-cursor-dot {
+        cursor: auto;
+
+        a,
+        button,
+        [role="button"] {
+            cursor: pointer;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-dot {
+        transition: opacity 120ms ease;
+    }
 }
