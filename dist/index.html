@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HÜGELTON INSTRUMENTS</title>
+        <meta
+            name="description"
+            content="HÜGELTON INSTRUMENTS designs Eurorack modules, experimental software, and media tools from Kobe, Japan."
+        />
+        <meta name="theme-color" content="#0055ff" />
+        <meta property="og:title" content="HÜGELTON INSTRUMENTS" />
+        <meta
+            property="og:description"
+            content="Custom Eurorack modules, experimental software, and instrument design from Kobe."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://hugelton.github.io/hugelton/"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./src/styles/main.css?v=1780239913484" />
+    </head>
+    <body>
+        <div class="cursor-dot" aria-hidden="true"></div>
+        <main class="site-shell">
+            <header class="topbar" id="top">
+                <div class="topbar__brand">
+                    <a
+                        href="./index.html"
+                        class="brand-link"
+                        aria-label="Hugelton Home"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="brand-logo"
+                            viewBox="0 0 8.504 6.373"
+                        >
+                            <g data-name="Print">
+                                <path
+                                    d="M8.226 4.705c-.082 0-.261-.17-.396-.628-.263-.893-.695-1.026-.929-1.026s-.665.133-.929 1.026c-.135.458-.314.628-.369.633-.002-.002-.236-.153-.415-1.208-.19-1.121-.497-1.666-.936-1.666s-.746.545-.937 1.666c-.13.767-.289 1.056-.357 1.156-.086-.159-.271-.647-.417-2.056C2.303.309 1.933 0 1.602 0S.901.309.663 2.602C.498 4.197.283 4.612.217 4.705h-.218v.556h.278c.331 0 .701-.309.938-2.602.131-1.257.291-1.781.386-1.993.095.211.255.735.386 1.993.238 2.293.608 2.602.939 2.602.44 0 .746-.545.937-1.666.161-.949.366-1.167.368-1.203.041.035.247.254.408 1.203.191 1.121.497 1.666.937 1.666.234 0 .665-.133.929-1.026.135-.458.314-.628.396-.628s.261.17.396.628c.263.893.695 1.027.929 1.027h.278v-.556h-.278ZM0 5.817h8.504v.556H0z"
+                                ></path>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+
+                <button
+                    class="topbar__mobile-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open menu"
+                >
+                    <span class="topbar__mobile-toggle-label">Menu</span>
+                    <ion-icon
+                        class="topbar__mobile-toggle-icon"
+                        name="menu-outline"
+                        aria-hidden="true"
+                    ></ion-icon>
+                </button>
+
+                <nav class="topbar__tags" aria-label="Primary">
+                    <div class="topbar__group">
+                        <a class="topbar__group-trigger" href="#showcase"
+                            >Products</a
+                        >
+                        <div class="topbar__submenu" aria-label="Products">
+                            <a href="#showcase">Featured</a>
+                            <a href="#catalog">Catalog</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                    </div>
+
+                    <a class="topbar__link" href="#about">About</a>
+
+                    <a class="topbar__link" href="./docs/index.html">Documents</a>
+
+                    <a class="topbar__link" href="#contact">Support</a>
+                </nav>
+
+                <div class="topbar__socials" aria-label="External links">
+                    <a
+                        class="topbar__social"
+                        href="https://github.com/mewdelic/hugelton"
+                        aria-label="GitHub"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-1.96c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.69.08-.69 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18a10.96 10.96 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.77 1.08.77 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        class="topbar__social topbar__social--x"
+                        href="https://x.com/hugelton_"
+                        aria-label="X"
+                    >
+                        𝕏
+                    </a>
+                </div>
+            </header>
+
+            <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+                <div class="mobile-menu__panel">
+                    <div class="mobile-menu__header">
+                        <a
+                            href="./index.html"
+                            class="mobile-menu__brand"
+                            aria-label="Hugelton Home"
+                        >
+                            <span class="mobile-menu__brand-mark">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="brand-logo"
+                                    viewBox="0 0 8.504 6.373"
+                                >
+                                    <g data-name="Print">
+                                        <path
+                                            d="M8.226 4.705c-.082 0-.261-.17-.396-.628-.263-.893-.695-1.026-.929-1.026s-.665.133-.929 1.026c-.135.458-.314.628-.369.633-.002-.002-.236-.153-.415-1.208-.19-1.121-.497-1.666-.936-1.666s-.746.545-.937 1.666c-.13.767-.289 1.056-.357 1.156-.086-.159-.271-.647-.417-2.056C2.303.309 1.933 0 1.602 0S.901.309.663 2.602C.498 4.197.283 4.612.217 4.705h-.218v.556h.278c.331 0 .701-.309.938-2.602.131-1.257.291-1.781.386-1.993.095.211.255.735.386 1.993.238 2.293.608 2.602.939 2.602.44 0 .746-.545.937-1.666.161-.949.366-1.167.368-1.203.041.035.247.254.408 1.203.191 1.121.497 1.666.937 1.666.234 0 .665-.133.929-1.026.135-.458.314-.628.396-.628s.261.17.396.628c.263.893.695 1.027.929 1.027h.278v-.556h-.278ZM0 5.817h8.504v.556H0z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span class="mobile-menu__brand-text"
+                                >HÜGELTON</span
+                            >
+                        </a>
+                        <button
+                            class="mobile-menu__close"
+                            type="button"
+                            aria-label="Close menu"
+                        >
+                            <span>Close</span>
+                            <ion-icon
+                                name="close-outline"
+                                aria-hidden="true"
+                            ></ion-icon>
+                        </button>
+                    </div>
+
+                    <div class="mobile-menu__groups">
+                        <div class="mobile-menu__group is-open">
+                            <button
+                                class="mobile-menu__group-trigger"
+                                type="button"
+                                aria-expanded="true"
+                            >
+                                <span>Products</span>
+                                <ion-icon
+                                    class="mobile-menu__group-icon"
+                                    name="chevron-down-outline"
+                                    aria-hidden="true"
+                                ></ion-icon>
+                            </button>
+                            <div class="mobile-menu__submenu">
+                                <a href="#showcase">Featured</a>
+                                <a href="#catalog">Catalog</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
+
+                        <div class="mobile-menu__links">
+                            <a href="#about">About</a>
+                            <a href="./docs/index.html">Documents</a>
+                            <a href="#contact">Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-shell">
+                <section class="hero-grid" id="hero">
+                    <div class="hero-grid__main">
+                        <h1 class="hero-title">
+                            <span class="hero-title__sans"
+                                >Media Generators</span
+                            >
+                            <span>HÜGELTON　INSTRUMENTS</span>
+                        </h1>
+
+                        <div class="hero-subline">
+                            <p>Eurorack modules, software, and media tools.</p>
+                            <p>Kobe, Japan.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="detail-grid detail-grid--intro" id="about">
+                    <div class="detail-grid__left">
+                        <p class="detail-label">Profile</p>
+                        <p class="detail-copy">
+                            HÜGELTON builds modular instruments and sound
+                            software.
+                        </p>
+                    </div>
+
+                    <div class="detail-grid__center">
+                        <p class="detail-label">Studio</p>
+                        <p class="detail-copy detail-copy--serif">
+                            Independent design and engineering from Kobe.
+                        </p>
+                    </div>
+
+                    <div class="detail-grid__right">
+                        <a class="action-link" href="#contact">Contact</a>
+                    </div>
+                </section>
+
+                <section
+                    class="showcase-grid"
+                    id="showcase"
+                    aria-label="Featured Products"
+                >
+                    <!-- SHOWCASE_CARDS_START -->
+                    <a class="showcase-card" href="products/k112e.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">01</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <img src="/showcase-transparent/K112E.png" alt="K112E sketch" />
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>K112E</h2>
+                            <p>Digital compound oscillator</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card" href="products/tem.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">02</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <img src="/showcase-transparent/tem.png" alt="The Earth Module sketch" />
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>The Earth Module</h2>
+                            <p>Networked Environmental Modulator</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card" href="https://hugelton.itch.io/posg">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">03</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Software</span>
+                                <span class="showcase-card__type-badge">Playdate</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <img src="/showcase-transparent/posg.png" alt="P.O.S.G. sketch" />
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>P.O.S.G.</h2>
+                            <p>Playdate Organic Sound Generators</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/k102e.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">04</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>K102E</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>K102E</h2>
+                            <p>Digital Compound Oscillator</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/k104e.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">05</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>K104E</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>K104E</h2>
+                            <p>Dual digital envelope generator</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/k108e.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">06</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>K108E</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>K108E</h2>
+                            <p>Digital Traveler</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s601.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">07</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--kit">Kit</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Utility</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S601</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S601</h2>
+                            <p>MIDI patchbay</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s603.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">08</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Utility</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S603</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S603</h2>
+                            <p>MIDI CC to CV decoder</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s503.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">09</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S503 (Quex)</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S503 (Quex)</h2>
+                            <p>Digital Rhythm Computer</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s602.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">10</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Utility</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S602</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S602</h2>
+                            <p>Passive A/B Switch</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s807.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">11</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S807</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S807</h2>
+                            <p>Level Meter</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="products/s901.html">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">12</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--new">New</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Hardware</span>
+                                <span class="showcase-card__type-badge">Eurorack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>S901</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>S901</h2>
+                            <p>Power Supply</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="https://kurogedelic.itch.io/yacht">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">13</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Software</span>
+                                <span class="showcase-card__type-badge">Playdate</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>Yacht</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>Yacht</h2>
+                            <p>The Handheld Music Studio</p>
+                        </div>
+                    </a>
+
+                    <a class="showcase-card showcase-card--text" href="https://library.vcvrack.com/Hugelton">
+                        <div class="showcase-card__head">
+                            <div class="showcase-card__head-main">
+                                <span class="showcase-card__index">14</span>
+                                <span class="showcase-card__state-badge showcase-card__state-badge--available">Available</span>
+                            </div>
+                            <div class="showcase-card__type-badges">
+                                <span class="showcase-card__type-badge">Software</span>
+                                <span class="showcase-card__type-badge">VCV Rack</span>
+                            </div>
+                        </div>
+                        <div class="showcase-card__media">
+                            <div class="showcase-card__placeholder">
+                                <span>Archive</span>
+                                <strong>VCV Rack Modules</strong>
+                            </div>
+                        </div>
+                        <div class="showcase-card__body">
+                            <h2>VCV Rack Modules</h2>
+                            <p>K-Series Modules for VCV Rack</p>
+                        </div>
+                    </a><!-- SHOWCASE_CARDS_END -->
+                </section>
+
+                <section class="catalog-grid" id="catalog">
+                    <div class="catalog-grid__head">
+                        <p class="detail-label">Product Index</p>
+                        <p class="catalog-grid__note">
+                            Selected products and archive entries.
+                        </p>
+                    </div>
+                    <div class="catalog-grid__list">
+                        <!-- CATALOG_CARDS_START -->
+                        <a class="catalog-card" href="products/k102e.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Released
+                                </p>
+                                <h3>K102E</h3>
+                            </div>
+                            <p>Digital Compound Oscillator</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/k104e.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Released
+                                </p>
+                                <h3>K104E</h3>
+                            </div>
+                            <p>Dual digital envelope generator</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/k108e.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Development
+                                </p>
+                                <h3>K108E</h3>
+                            </div>
+                            <p>Digital Traveler</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/k112e.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Development
+                                </p>
+                                <h3>K112E</h3>
+                            </div>
+                            <p>Digital compound oscillator</p>
+                        </a>
+
+                        <a class="catalog-card" href="https://hugelton.itch.io/posg">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Software / Playdate / Released
+                                </p>
+                                <h3>P.O.S.G.</h3>
+                            </div>
+                            <p>Playdate Organic Sound Generators</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s503.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Development
+                                </p>
+                                <h3>S503 (Quex)</h3>
+                            </div>
+                            <p>Digital Rhythm Computer</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s601.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Utility / Soon
+                                </p>
+                                <h3>S601</h3>
+                            </div>
+                            <p>MIDI patchbay</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s602.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Utility / Development
+                                </p>
+                                <h3>S602</h3>
+                            </div>
+                            <p>Passive A/B Switch</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s603.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Utility / Development
+                                </p>
+                                <h3>S603</h3>
+                            </div>
+                            <p>MIDI CC to CV decoder</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s807.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Development
+                                </p>
+                                <h3>S807</h3>
+                            </div>
+                            <p>Level Meter</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/s901.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Development
+                                </p>
+                                <h3>S901</h3>
+                            </div>
+                            <p>Power Supply</p>
+                        </a>
+
+                        <a class="catalog-card" href="products/tem.html">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Hardware / Eurorack / Released
+                                </p>
+                                <h3>The Earth Module</h3>
+                            </div>
+                            <p>Networked Environmental Modulator</p>
+                        </a>
+
+                        <a class="catalog-card" href="https://library.vcvrack.com/Hugelton">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Software / VCV Rack / Released
+                                </p>
+                                <h3>VCV Rack Modules</h3>
+                            </div>
+                            <p>K-Series Modules for VCV Rack</p>
+                        </a>
+
+                        <a class="catalog-card" href="https://kurogedelic.itch.io/yacht">
+                            <div>
+                                <p class="catalog-card__meta">
+                                    Software / Playdate / Released
+                                </p>
+                                <h3>Yacht</h3>
+                            </div>
+                            <p>The Handheld Music Studio</p>
+                        </a><!-- CATALOG_CARDS_END -->
+                    </div>
+                </section>
+
+                <section class="contact-grid" id="contact">
+                    <div class="contact-grid__head">
+                        <p class="detail-label">Contact</p>
+                        <p class="section-copy">
+                            Docs, updates, and direct contact.
+                        </p>
+                    </div>
+                    <div class="contact-grid__cards">
+                        <a
+                            class="contact-card"
+                            id="documents"
+                            href="./docs/index.html"
+                        >
+                            <div class="contact-card__head">
+                                <span
+                                    class="contact-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M7 2.5h7l5 5V21a.5.5 0 0 1-.5.5h-11A2.5 2.5 0 0 1 5 19V5A2.5 2.5 0 0 1 7.5 2.5H7Zm6 1.8V8h3.7L13 4.3ZM8.5 11h7v1.5h-7V11Zm0 3.5h7V16h-7v-1.5Zm0-7h2.5V9H8.5V7.5Z"
+                                        ></path>
+                                    </svg>
+                                </span>
+                                <div class="contact-card__text">
+                                    <span class="contact-card__meta">Docs</span>
+                                    <p class="card-title">
+                                        Documentation Index
+                                    </p>
+                                </div>
+                            </div>
+                            <p>Product notes and entry points.</p>
+                        </a>
+                        <a class="contact-card" href="mailto:info@hugelton.com">
+                            <div class="contact-card__head">
+                                <span
+                                    class="contact-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M4 5.5h16A1.5 1.5 0 0 1 21.5 7v10A1.5 1.5 0 0 1 20 18.5H4A1.5 1.5 0 0 1 2.5 17V7A1.5 1.5 0 0 1 4 5.5Zm0 2.1v.2l8 5.4 8-5.4v-.2H4Zm16 9.4V9.6l-7.58 5.12a.75.75 0 0 1-.84 0L4 9.6V17h16Z"
+                                        ></path>
+                                    </svg>
+                                </span>
+                                <div class="contact-card__text">
+                                    <span class="contact-card__meta"
+                                        >Email</span
+                                    >
+                                    <p class="card-title">info@hugelton.com</p>
+                                </div>
+                            </div>
+                            <p>Product and project inquiries.</p>
+                        </a>
+                        <a
+                            class="contact-card"
+                            href="https://github.com/mewdelic/hugelton"
+                        >
+                            <div class="contact-card__head">
+                                <span
+                                    class="contact-card__icon contact-card__icon--github"
+                                    aria-hidden="true"
+                                >
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-1.96c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.69.08-.69 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18a10.96 10.96 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.77 1.08.77 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                                        ></path>
+                                    </svg>
+                                </span>
+                                <div class="contact-card__text">
+                                    <span class="contact-card__meta"
+                                        >GitHub</span
+                                    >
+                                    <p class="card-title">
+                                        Repository + Issues
+                                    </p>
+                                </div>
+                            </div>
+                            <p>Public issue tracking and source.</p>
+                        </a>
+                    </div>
+                </section>
+                <footer class="footer-grid">
+                    <div class="footer-grid__brand">
+                        <p class="detail-label">HÜGELTON INSTRUMENTS</p>
+                        <p class="footer-copy">
+                            Independent instrument design from Kobe, Japan.
+                        </p>
+                    </div>
+                    <div class="footer-grid__meta">
+                        <span>Kobe, Japan</span>
+                        <span>Eurorack / Software / Media</span>
+                    </div>
+                </footer>
+            </div>
+        </main>
+        <script type="module" src="/src/js/site.js"></script>
+    </body>
+</html>

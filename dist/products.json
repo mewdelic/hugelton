@@ -1,0 +1,131 @@
+[
+  {
+    "slug": "k102e",
+    "name": "K102E",
+    "tagline": "Digital Compound Oscillator",
+    "status": "available",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "k104e",
+    "name": "K104E",
+    "tagline": "Dual digital envelope generator",
+    "status": "available",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "k108e",
+    "name": "K108E",
+    "tagline": "Digital Traveler",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "k112e",
+    "name": "K112E",
+    "tagline": "Digital compound oscillator",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog",
+    "image": "K112E.png"
+  },
+  {
+    "slug": "posg",
+    "name": "P.O.S.G.",
+    "tagline": "Playdate Organic Sound Generators",
+    "status": "available",
+    "type": "Software",
+    "category": "Playdate",
+    "link": "https://hugelton.itch.io/posg",
+    "image": "posg.png"
+  },
+  {
+    "slug": "s503",
+    "name": "S503 (Quex)",
+    "tagline": "Digital Rhythm Computer",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "s601",
+    "name": "S601",
+    "tagline": "MIDI patchbay",
+    "status": "kit",
+    "type": "Hardware",
+    "category": "Utility",
+    "link": "#catalog"
+  },
+  {
+    "slug": "s602",
+    "name": "S602",
+    "tagline": "Passive A/B Switch",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Utility",
+    "link": "#catalog"
+  },
+  {
+    "slug": "s603",
+    "name": "S603",
+    "tagline": "MIDI CC to CV decoder",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Utility",
+    "link": "#catalog"
+  },
+  {
+    "slug": "s807",
+    "name": "S807",
+    "tagline": "Level Meter",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "s901",
+    "name": "S901",
+    "tagline": "Power Supply",
+    "status": "new",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog"
+  },
+  {
+    "slug": "tem",
+    "name": "The Earth Module",
+    "tagline": "Networked Environmental Modulator",
+    "status": "available",
+    "type": "Hardware",
+    "category": "Eurorack",
+    "link": "#catalog",
+    "image": "tem.png"
+  },
+  {
+    "slug": "vcvrack",
+    "name": "VCV Rack Modules",
+    "tagline": "K-Series Modules for VCV Rack",
+    "status": "available",
+    "type": "Software",
+    "category": "VCV Rack",
+    "link": "https://library.vcvrack.com/Hugelton"
+  },
+  {
+    "slug": "yacht",
+    "name": "Yacht",
+    "tagline": "The Handheld Music Studio",
+    "status": "available",
+    "type": "Software",
+    "category": "Playdate",
+    "link": "https://kurogedelic.itch.io/yacht"
+  }
+]

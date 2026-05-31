@@ -69,7 +69,7 @@ const updatedIndex = indexTemplate
     /<!-- CATALOG_CARDS_START -->[\s\S]*?<!-- CATALOG_CARDS_END -->/,
     `<!-- CATALOG_CARDS_START -->${catalogCards}<!-- CATALOG_CARDS_END -->`
   )
-  .replace(/<link rel="stylesheet" href="\/src\/styles\/main\.scss" \/>/, '<link rel="stylesheet" href="/src/styles/main.css?v=' + Date.now() + '" />');
+  .replace(/<link rel="stylesheet" href="\/src\/styles\/main\.scss" \/>/, '<link rel="stylesheet" href="./src/styles/main.css?v=' + Date.now() + '" />');
 
 // Ensure dist directory exists
 fs.mkdirSync(distDir, { recursive: true });
